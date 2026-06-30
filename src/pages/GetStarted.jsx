@@ -5,12 +5,12 @@ import TopicCard from "../components/TopicCard";
 import Checklist from "../components/Checklist";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
-import { nav } from "../config/site";
+import { nav, site } from "../config/site";
 
 export default function GetStarted() {
   return (
     <>
-      <PageHero lines={["LET'S", "GET", "STARTED!"]} accentIndex={2} color="stage-1" />
+      <PageHero lines={["LET'S", "GET", "STARTED!"]} accentIndex={2} color="stage-1" image={site.heroImages.getStarted} />
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-16">

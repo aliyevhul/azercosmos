@@ -4,7 +4,7 @@ import CategoryRow from "../components/CategoryRow";
 import TopicCard from "../components/TopicCard";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
-import { nav } from "../config/site";
+import { nav, site } from "../config/site";
 
 const routes = [
   {
@@ -27,7 +27,7 @@ const routes = [
 export default function Training() {
   return (
     <>
-      <PageHero lines={["FIND", "YOUR", "ROUTE IN!"]} accentIndex={2} color="stage-4" />
+      <PageHero lines={["FIND", "YOUR", "ROUTE IN!"]} accentIndex={2} color="stage-4" image={site.heroImages.training} />
 
       <section className="bg-paper pt-14 md:pt-16">
         <div className="mx-auto max-w-5xl px-5 md:px-8">

@@ -47,6 +47,21 @@ export const site = {
   ],
 
   copyrightHolder: "Your Organization Name",
+
+  // Hero photos shown next to the bold headline on each page. Drop your
+  // own photos into /public/photos/ and point these at them, e.g.
+  // "/photos/home-hero.jpg". Recommended size: at least 1200x800px,
+  // landscape orientation — it's cropped to fill the box automatically.
+  // Leave as null to show the "Add your own photo" placeholder.
+  heroImages: {
+    home: null,
+    getStarted: null,
+    potential: null,
+    practicalPhases: null,
+    training: null,
+    documents: null,
+    conclusion: null,
+  },
 };
 
 // Main navigation — one entry per stage, each with its own accent color

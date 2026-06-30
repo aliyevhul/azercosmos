@@ -1,13 +1,13 @@
 import PageHero from "../components/PageHero";
 import StageNav from "../components/StageNav";
-import { nav } from "../config/site";
+import { nav, site } from "../config/site";
 import { documents } from "../data/documents";
 import { FileDown } from "lucide-react";
 
 export default function Documents() {
   return (
     <>
-      <PageHero lines={["YOUR", "DOCUMENTS!"]} accentIndex={1} color="stage-5" />
+      <PageHero lines={["YOUR", "DOCUMENTS!"]} accentIndex={1} color="stage-5" image={site.heroImages.documents} />
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-16">

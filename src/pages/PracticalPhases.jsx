@@ -5,7 +5,7 @@ import TopicCard from "../components/TopicCard";
 import Checklist from "../components/Checklist";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
-import { nav } from "../config/site";
+import { nav, site } from "../config/site";
 
 const phases = [
   {
@@ -31,7 +31,7 @@ const phases = [
 export default function PracticalPhases() {
   return (
     <>
-      <PageHero lines={["TIME", "TO GET", "PRACTICAL!"]} accentIndex={2} color="stage-3" />
+      <PageHero lines={["TIME", "TO GET", "PRACTICAL!"]} accentIndex={2} color="stage-3" image={site.heroImages.practicalPhases} />
 
       <section className="bg-paper pt-14 md:pt-16">
         <div className="mx-auto max-w-5xl px-5 md:px-8">

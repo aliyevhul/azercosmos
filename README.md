@@ -44,11 +44,13 @@ Pages, Cloudflare Pages, or any static host.
    text wordmark + tagline placeholder.
 
 **Your photos**
-The hero sections (`src/components/Hero.jsx`) currently show a dashed
-placeholder box. Replace the placeholder markup with an `<img>` once you
-have your own photo — using a real photo of real people requires their
-permission, so this is left for you to fill in deliberately rather than
-auto-filled with a stock image.
+Each page's hero photo is a config slot, just like the logo and PDFs.
+Drop your photos into `public/photos/`, then point `heroImages` in
+`src/config/site.js` at them — e.g. `home: "/photos/home-hero.jpg"`.
+Recommended size: at least 1200×800px, landscape orientation — it's
+cropped automatically to fill the box (≈420×288px on the homepage,
+≈420×192px on stage pages, both at desktop width). Leave a slot `null`
+to keep the "Add your own photo" placeholder.
 
 **Colors**
 All six section colors, plus the navy/dark-hero tones, live in

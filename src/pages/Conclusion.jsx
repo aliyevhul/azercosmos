@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import PageHero from "../components/PageHero";
 import StageNav from "../components/StageNav";
-import { nav } from "../config/site";
+import { nav, site } from "../config/site";
 
 export default function Conclusion() {
   return (
     <>
-      <PageHero lines={["BRING IT", "ALL", "TOGETHER!"]} accentIndex={2} color="stage-6" />
+      <PageHero lines={["BRING IT", "ALL", "TOGETHER!"]} accentIndex={2} color="stage-6" image={site.heroImages.conclusion} />
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">

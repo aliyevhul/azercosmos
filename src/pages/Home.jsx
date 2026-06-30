@@ -6,7 +6,7 @@ import { site } from "../config/site";
 export default function Home() {
   return (
     <>
-      <Hero lines={["YOUR", "FUTURE", "STARTS", "NOW!"]} />
+      <Hero lines={["YOUR", "FUTURE", "STARTS", "NOW!"]} image={site.heroImages.home} />
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
