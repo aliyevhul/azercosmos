@@ -5,7 +5,7 @@ export default function StageNav({ prev, next }) {
   return (
     <nav
       aria-label="Stage navigation"
-      className="mx-auto flex max-w-6xl flex-col gap-3 border-t border-paper-line px-5 py-10 sm:flex-row sm:items-center sm:justify-between md:px-8"
+      className="mx-auto flex max-w-7xl flex-col gap-3 px-5 py-10 sm:flex-row sm:items-center sm:justify-between md:px-8"
     >
       {prev ? (
         <Link
@@ -21,7 +21,7 @@ export default function StageNav({ prev, next }) {
       {next ? (
         <Link
           to={next.to}
-          className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 font-display text-sm font-semibold text-paper hover:bg-ink-light"
+          className="inline-flex items-center gap-2 rounded-md bg-stage-2 px-5 py-2.5 font-display text-sm font-semibold text-white hover:bg-stage-2/90"
         >
           {next.label}
           <ArrowRight size={16} />

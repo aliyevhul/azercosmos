@@ -1,5 +1,7 @@
+import { Lightbulb, FileBarChart, ClipboardEdit } from "lucide-react";
 import PageHero from "../components/PageHero";
-import Checklist from "../components/Checklist";
+import CategoryRow from "../components/CategoryRow";
+import TopicCard from "../components/TopicCard";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
 import { nav } from "../config/site";
@@ -7,73 +9,80 @@ import { nav } from "../config/site";
 export default function Potential() {
   return (
     <>
-      <PageHero
-        number={2}
-        eyebrow="Potential"
-        tone="stamp"
-        title="Discover your potential"
-        intro="Before exploring job titles, get clear on what you're already good at, what you enjoy, and what kind of work actually energizes you."
-      />
+      <PageHero lines={["DISCOVER", "YOUR", "STRENGTHS!"]} accentIndex={2} color="stage-2" />
 
-      <section className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-20">
-        <h2 className="font-display text-xl font-semibold text-ink">Three angles worth checking</h2>
-        <p className="mt-3 leading-relaxed text-slate">
-          Strengths, interests, and working style don't always point to the
-          same job — but together they narrow things down a lot faster than
-          guessing from a list of career names.
-        </p>
-
-        <div className="mt-8 space-y-6">
-          <div className="rounded-xl border border-paper-line p-6">
-            <h3 className="font-display text-base font-semibold text-ink">Strengths</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-slate">
-              What do people consistently ask you for help with? What
-              comes more easily to you than to most people around you?
-              Strengths are often invisible to the person who has them —
-              ask someone who knows you well.
-            </p>
-          </div>
-          <div className="rounded-xl border border-paper-line p-6">
-            <h3 className="font-display text-base font-semibold text-ink">Interests</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-slate">
-              What do you read about, watch, or do without anyone telling
-              you to? Interests point at subject areas; they don't have to
-              map directly onto a job title yet.
-            </p>
-          </div>
-          <div className="rounded-xl border border-paper-line p-6">
-            <h3 className="font-display text-base font-semibold text-ink">Working style</h3>
-            <p className="mt-2 text-[15px] leading-relaxed text-slate">
-              Do you prefer working with people, data, objects, or ideas?
-              Indoors or outdoors? Alone or in a team? This shapes whether
-              a job that matches your interests will actually feel good
-              day to day.
-            </p>
-          </div>
+      <section className="bg-paper pt-14 md:pt-16">
+        <div className="mx-auto max-w-5xl space-y-5 px-5 md:px-8">
+          <CategoryRow label="Lower Secondary">
+            <TopicCard icon={Lightbulb} title="Assess yourself" href="#assess-yourself" color="stage-2" />
+            <TopicCard icon={FileBarChart} title="How the assessment works" href="#assessment" color="stage-2" />
+          </CategoryRow>
+          <CategoryRow label="Upper Secondary">
+            <TopicCard icon={ClipboardEdit} title="Plan your next steps" href="#next-steps" color="stage-2" />
+          </CategoryRow>
         </div>
+      </section>
 
-        <h2 className="mt-12 font-display text-xl font-semibold text-ink">A short exercise</h2>
-        <p className="mt-3 leading-relaxed text-slate">
-          Grab the worksheet from the documents page, then answer these
-          before you fill it in:
-        </p>
-        <div className="mt-5">
-          <Checklist
-            items={[
-              "List three things people thank you for",
-              "List three subjects or activities you'd choose freely",
-              "Describe your ideal Tuesday afternoon at work",
-              "Name one thing you definitely don't want in a job",
-            ]}
-          />
-        </div>
+      <section className="bg-paper">
+        <div className="mx-auto max-w-3xl space-y-12 px-5 py-16 md:px-8 md:py-20">
+          <div id="assess-yourself">
+            <h2 className="font-display text-xl font-semibold text-ink">Three angles worth checking</h2>
+            <p className="mt-3 leading-relaxed text-slate">
+              Strengths, interests, and working style don't always point to
+              the same job — but together they narrow things down a lot
+              faster than guessing from a list of career names.
+            </p>
+            <div className="mt-6 space-y-4">
+              <div className="rounded-xl bg-card p-6">
+                <h3 className="font-display text-base font-semibold text-ink">Strengths</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-slate">
+                  What do people consistently ask you for help with? What
+                  comes more easily to you than to most people around you?
+                  Strengths are often invisible to the person who has them —
+                  ask someone who knows you well.
+                </p>
+              </div>
+              <div className="rounded-xl bg-card p-6">
+                <h3 className="font-display text-base font-semibold text-ink">Interests</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-slate">
+                  What do you read about, watch, or do without anyone
+                  telling you to? Interests point at subject areas; they
+                  don't have to map directly onto a job title yet.
+                </p>
+              </div>
+              <div className="rounded-xl bg-card p-6">
+                <h3 className="font-display text-base font-semibold text-ink">Working style</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-slate">
+                  Do you prefer working with people, data, objects, or
+                  ideas? Indoors or outdoors? Alone or in a team? This
+                  shapes whether a job that matches your interests will
+                  actually feel good day to day.
+                </p>
+              </div>
+            </div>
+          </div>
 
-        <div className="mt-10">
-          <Callout label="Tip">
-            Don't filter your answers by what sounds impressive. "I'm good
-            at calming people down" is just as useful here as "I'm good at
-            math."
-          </Callout>
+          <div id="assessment">
+            <h2 className="font-display text-xl font-semibold text-ink">A short exercise</h2>
+            <p className="mt-3 leading-relaxed text-slate">
+              Grab the worksheet from the documents page, then answer these
+              before you fill it in:
+            </p>
+            <ul className="mt-5 space-y-3 text-[15px] leading-relaxed text-slate">
+              <li className="border-b border-black/5 pb-3">List three things people thank you for</li>
+              <li className="border-b border-black/5 pb-3">List three subjects or activities you'd choose freely</li>
+              <li className="border-b border-black/5 pb-3">Describe your ideal Tuesday afternoon at work</li>
+              <li className="pb-1">Name one thing you definitely don't want in a job</li>
+            </ul>
+          </div>
+
+          <div id="next-steps">
+            <Callout label="Tip">
+              Don't filter your answers by what sounds impressive. "I'm good
+              at calming people down" is just as useful here as "I'm good at
+              math."
+            </Callout>
+          </div>
         </div>
       </section>
 

@@ -1,15 +1,16 @@
 # Career Passport
 
-An English-language career-orientation site for students, inspired by the
-stage-based structure of [bwp-nrw.de](https://bwp-nrw.de/): six guided
-stages from "get started" through to a personal plan. Built as a clean
-React + Vite + Tailwind project so you can run it yourself and reshape it
-into your own organization's site.
+An English-language career-orientation site for students, built to match
+the layout and visual structure of [bwp-nrw.de](https://bwp-nrw.de/):
+white header with color-coded section buttons, a dark hero with a bold
+headline and photo, an "initiative of" partner band, a "supported by"
+logo grid, and icon-card content sections on each stage page.
 
-This is an original build — the design, copy, and code are new. Nothing
-here was copied from bwp-nrw.de; only the general concept (a multi-stage
-career-orientation journey for students) and the six-section structure
-were used as a starting point.
+This is an original build — the code, copy, and any photos are new (the
+hero photo is a placeholder you fill in yourself, since reusing a stock
+photo of real people would raise its own rights issues). Only the layout,
+structure, and six-section color scheme were used as a starting point;
+no text or logos were copied from bwp-nrw.de.
 
 ## Run it locally
 
@@ -18,78 +19,70 @@ npm install
 npm run dev
 ```
 
-Open the URL it prints (usually http://localhost:5173).
-
 ## Build for production
 
 ```bash
 npm run build
 ```
 
-This outputs a static site into `dist/`. Deploy `dist/` to any static
-host — Netlify, Vercel, GitHub Pages, Cloudflare Pages, your own server,
-etc. There's no backend; it's all static HTML/CSS/JS.
+Outputs a static site into `dist/` — deploy it to Vercel, Netlify, GitHub
+Pages, Cloudflare Pages, or any static host.
 
 ## Making it yours
 
-Everything you're likely to want to change first lives in one place:
-
 **`src/config/site.js`**
-- `name` — the site name shown in the navbar and tab title
+- `name`, `taglineWords` — site name and the three-word tagline under the logo
 - `logoSrc` — path to your logo (see below)
-- `organization`, `contactEmail` — footer details
-- `legalLinks` — imprint / privacy policy links
-- `supporters` — partner/sponsor logos shown in the footer
+- `nav` — the six sections, each with a `color` token (`stage-1` … `stage-6`)
+- `initiativePartners`, `supporters` — the two logo strips on the homepage
+  (currently filled with placeholder boxes so the layout previews fully —
+  swap these out first)
 
 **Your logo**
-1. Drop your logo file into `public/logo/` (e.g. `public/logo/logo.svg`)
-2. In `src/config/site.js`, set `logoSrc: "/logo/logo.svg"`
-3. Until you do this, the navbar shows a simple "CP" monogram placeholder
+1. Drop your logo file into `public/logo/`
+2. Set `logoSrc` in `site.js` to its path. Until then, the navbar shows a
+   text wordmark + tagline placeholder.
 
-**Your PDFs / documents**
-1. Drop PDF files into `public/documents/`
-2. Edit `src/data/documents.js` — each entry has a `title`, `description`,
-   and `file` path pointing at your PDF. Group them under `category`
-   headings however makes sense for you.
-3. A placeholder PDF is included so the links work out of the box —
-   replace it with real files before launch.
+**Your photos**
+The hero sections (`src/components/Hero.jsx`) currently show a dashed
+placeholder box. Replace the placeholder markup with an `<img>` once you
+have your own photo — using a real photo of real people requires their
+permission, so this is left for you to fill in deliberately rather than
+auto-filled with a stock image.
 
-**Colors and fonts**
+**Colors**
+All six section colors, plus the navy/dark-hero tones, live in
+`src/index.css` under `@theme`. Each stage's color is referenced via a
+token (`stage-1` … `stage-6`) in `src/config/colors.js` — change the hex
+value in `index.css` and it updates everywhere that stage is used (nav
+button, page hero, cards, links).
 
-All design tokens live in `src/index.css` under the `@theme` block at the
-top — color values (`--color-ink`, `--color-brass`, etc.) and font
-families. Change a value there and it updates everywhere, since every
-component uses these tokens rather than hardcoded colors.
+**Your PDFs**
+Drop files into `public/documents/` and list them in
+`src/data/documents.js`.
 
-**Page copy**
-
-Each stage is its own file in `src/pages/` (`GetStarted.jsx`,
-`Potential.jsx`, `PracticalPhases.jsx`, `Training.jsx`, `Documents.jsx`,
-`Conclusion.jsx`) plus `Home.jsx` for the landing page. The text is plain
-JSX — edit it directly. The navigation labels themselves come from the
-`nav` array in `src/config/site.js`.
-
-**Adding, removing, or reordering stages**
-
-Update the `nav` array in `src/config/site.js`, the `stages` array in
-`src/pages/Home.jsx`, the routes in `src/App.jsx`, and the `prev`/`next`
-props passed to `<StageNav />` at the bottom of each page.
+**Page copy and cards**
+Each stage page in `src/pages/` builds its topic cards (`TopicCard` +
+`CategoryRow`) and supporting content directly in JSX — edit titles,
+icons (from `lucide-react`), and paragraph text there.
 
 ## Project structure
 
 ```
 src/
-  components/   Navbar, Footer, Layout, Stamp (signature graphic),
-                PageHero, StageCard, StageNav, Checklist, Callout
+  components/   Navbar, Footer, Hero, PageHero, PartnerBand,
+                SupportersGrid, CategoryRow, TopicCard, StageNav,
+                Checklist, Callout, Layout
   pages/        Home + the six stage pages
-  config/       site.js — the file you'll edit most
+  config/       site.js (content/branding) + colors.js (stage color map)
   data/         documents.js — the downloadable file list
 public/
-  logo/         put your logo file(s) here
-  documents/    put your PDF file(s) here
+  logo/         your logo + partner/supporter logo files
+  documents/    your PDF files
 ```
 
 ## Tech stack
 
 React 19, React Router 7, Vite, Tailwind CSS v4 (CSS-based config — see
-`src/index.css`, no `tailwind.config.js` needed), lucide-react for icons.
+`src/index.css`), lucide-react for icons.
+
