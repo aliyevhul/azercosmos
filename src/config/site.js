@@ -13,14 +13,14 @@ export const site = {
 
   // Path to your logo file. Drop your own file into /public/logo/
   // and point this at it, e.g. "/logo/your-logo.svg"
-  logoSrc: null, // null = use the built-in monogram placeholder instead
+  logoSrc: "/logo/space-academy-logo.png",
 
-  organization: "Your Organization Name",
-  contactEmail: "hello@example.org",
+  organization: "Space Academy",
+  contactEmail: "Info.SpaceAcademy@azercosmos.az",
 
   legalLinks: [
     { label: "Imprint", href: "#" },
-    { label: "Privacy Policy", href: "#" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
   ],
 
   // The "is an initiative of" band — usually the organization(s) that
@@ -46,7 +46,7 @@ export const site = {
     { name: "Logo 8", src: "/logo/supporter-8.svg", href: "#" },
   ],
 
-  copyrightHolder: "Your Organization Name",
+  copyrightHolder: "Space Academy",
 
   // Hero photos shown next to the bold headline on each page. Drop your
   // own photos into /public/photos/ and point these at them, e.g.

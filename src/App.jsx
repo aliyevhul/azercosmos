@@ -7,6 +7,7 @@ import PracticalPhases from "./pages/PracticalPhases";
 import Training from "./pages/Training";
 import Documents from "./pages/Documents";
 import Conclusion from "./pages/Conclusion";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/training" element={<Training />} />
         <Route path="/documents" element={<Documents />} />
         <Route path="/conclusion" element={<Conclusion />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Route>
     </Routes>
   );

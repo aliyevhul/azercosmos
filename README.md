@@ -40,8 +40,18 @@ Pages, Cloudflare Pages, or any static host.
 
 **Your logo**
 1. Drop your logo file into `public/logo/`
-2. Set `logoSrc` in `site.js` to its path. Until then, the navbar shows a
-   text wordmark + tagline placeholder.
+2. Set `logoSrc` in `site.js` to its path. Currently set to the Space
+   Academy logo (`/logo/space-academy-logo.png`) — it appears next to the
+   "Career Guidance" wordmark in the navbar. Replace the file (and update
+   `organization` in `site.js`) to rebrand.
+
+**Privacy Policy**
+A full Privacy Policy page lives at `src/pages/PrivacyPolicy.jsx`
+(route: `/privacy-policy`, linked from the footer). It's a general-purpose
+template written for a static, student-facing site — review it with a
+qualified lawyer before publishing, especially given the site's student
+audience, and update the sections on analytics/cookies once you know
+exactly what tools (if any) will run on the deployed site.
 
 **Your photos**
 Each page's hero photo is a config slot, just like the logo and PDFs.

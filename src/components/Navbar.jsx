@@ -11,23 +11,22 @@ export default function Navbar() {
   return (
     <header className="border-b border-black/5 bg-paper">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4 md:px-8">
-        <Link to="/" className="flex flex-col" onClick={() => setOpen(false)}>
-          {site.logoSrc ? (
-            <img src={site.logoSrc} alt={site.name} className="h-10 w-auto" />
-          ) : (
-            <>
-              <span className="font-display text-xl font-bold tracking-tight text-ink">
-                {site.name}
-              </span>
-              <span className="font-display text-xs font-medium tracking-wide text-slate">
-                {site.taglineWords.map((w, i) => (
-                  <span key={w} className={i > 0 ? "ml-1" : ""}>
-                    <span className={tagColors[i % tagColors.length]}>{w}</span>
-                  </span>
-                ))}
-              </span>
-            </>
+        <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
+          {site.logoSrc && (
+            <img src={site.logoSrc} alt={site.organization} className="h-9 w-auto md:h-11" />
           )}
+          <span className="flex flex-col">
+            <span className="font-display text-xl font-bold tracking-tight text-ink">
+              {site.name}
+            </span>
+            <span className="font-display text-xs font-medium tracking-wide text-slate">
+              {site.taglineWords.map((w, i) => (
+                <span key={w} className={i > 0 ? "ml-1" : ""}>
+                  <span className={tagColors[i % tagColors.length]}>{w}</span>
+                </span>
+              ))}
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden lg:block">
