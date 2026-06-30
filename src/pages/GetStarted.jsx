@@ -15,7 +15,7 @@ export default function GetStarted() {
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-16">
           <p className="text-lg leading-relaxed text-slate">
-            This site walks alongside the paper or digital passport you
+            This site walks alongside the paper or digital tracker you
             already have. Use it to understand how each stage works, see
             examples, and download anything you need along the way.
           </p>
@@ -25,7 +25,7 @@ export default function GetStarted() {
       <section className="bg-paper pb-16 md:pb-20">
         <div className="mx-auto max-w-5xl space-y-6 px-5 md:px-8">
           <CategoryRow label="Overview">
-            <TopicCard icon={Compass} title="How the passport works" href="#how-it-works" color="stage-1" />
+            <TopicCard icon={Compass} title="How this guide works" href="#how-it-works" color="stage-1" />
             <TopicCard icon={Lightbulb} title="Tips before you begin" href="#tips" color="stage-1" />
           </CategoryRow>
           <CategoryRow label="Preparation">
@@ -39,7 +39,7 @@ export default function GetStarted() {
           <div id="how-it-works">
             <h2 className="font-display text-xl font-semibold text-ink">How this works</h2>
             <p className="mt-3 leading-relaxed text-slate">
-              The passport is built around six stages. You don't need to
+              This guide is built around six stages. You don't need to
               finish them in one sitting, and it's fine to revisit earlier
               stages as your thinking changes — that's normal, not a sign
               you're behind.
@@ -63,12 +63,12 @@ export default function GetStarted() {
           <div id="checklist">
             <h2 className="font-display text-xl font-semibold text-ink">Before you start</h2>
             <p className="mt-3 leading-relaxed text-slate">
-              A little preparation makes the rest of the passport go faster.
+              A little preparation makes the rest of the guide go faster.
             </p>
             <div className="mt-5">
               <Checklist
                 items={[
-                  "Get a folder or notebook (paper or digital) to keep your passport pages together",
+                  "Get a folder or notebook (paper or digital) to keep your notes together",
                   "Set aside about 30 minutes for the first two stages",
                   "Ask a teacher, mentor, or family member if they'd be willing to give feedback later",
                   "Keep an open mind — early answers are a starting point, not a final decision",

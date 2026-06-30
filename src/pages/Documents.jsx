@@ -13,7 +13,7 @@ export default function Documents() {
         <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-16">
           <p className="text-lg leading-relaxed text-slate">
             Worksheets and forms to download, print, and keep alongside your
-            passport. Replace these with your own files any time.
+            program. Replace these with your own files any time.
           </p>
         </div>
       </section>

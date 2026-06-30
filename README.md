@@ -1,4 +1,4 @@
-# Career Passport
+# Career Guidance
 
 An English-language career-orientation site for students, built to match
 the layout and visual structure of [bwp-nrw.de](https://bwp-nrw.de/):

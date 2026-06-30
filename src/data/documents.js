@@ -15,7 +15,7 @@ export const documents = [
     category: "Getting started",
     items: [
       {
-        title: "Career Passport — overview sheet",
+        title: "Career Guidance — overview sheet",
         description: "A one-page summary of how the passport works and what to fill in at each stage.",
         file: "/documents/placeholder.pdf",
         sizeLabel: "PDF",

@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 export const site = {
-  name: "CAREER PASSPORT",
+  name: "CAREER GUIDANCE",
   // Three-part tagline shown under the logo, each word in its own accent
   // color — matches the original's "meine Stärken meine Wege meine Ziele"
   // treatment. Replace freely; keep 3 short phrases for the same effect.

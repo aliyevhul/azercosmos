@@ -38,7 +38,7 @@ export default function Conclusion() {
           </ol>
 
           <div className="mt-12 flex flex-col items-center gap-4 rounded-2xl bg-card px-6 py-12 text-center">
-            <h3 className="font-display text-xl font-semibold text-ink">That's the full passport.</h3>
+            <h3 className="font-display text-xl font-semibold text-ink">That's the full guide.</h3>
             <p className="max-w-md text-[15px] text-slate">
               Plans change, and that's expected — you can come back to any
               stage as new information comes in.

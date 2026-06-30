@@ -14,7 +14,7 @@ export default function Home() {
             Welcome to {site.name}!
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-slate">
-            Alongside the passport you already have, you'll find the most
+            Alongside any career materials you already have, you'll find the most
             important information and content here to support you in
             choosing a career. Discover your strengths, explore exciting
             career fields, and find out which path fits you best.
