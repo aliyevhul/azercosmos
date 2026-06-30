@@ -5,6 +5,7 @@ import TopicCard from "../components/TopicCard";
 import Checklist from "../components/Checklist";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
+import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
 
 export default function GetStarted() {
@@ -14,11 +15,11 @@ export default function GetStarted() {
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-16">
-          <p className="text-lg leading-relaxed text-slate">
+          <Reveal as="p" className="text-lg leading-relaxed text-slate">
             This site walks alongside the paper or digital tracker you
             already have. Use it to understand how each stage works, see
             examples, and download anything you need along the way.
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -36,7 +37,7 @@ export default function GetStarted() {
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl space-y-12 px-5 pb-16 md:px-8 md:pb-20">
-          <div id="how-it-works">
+          <Reveal as="div" id="how-it-works">
             <h2 className="font-display text-xl font-semibold text-ink">How this works</h2>
             <p className="mt-3 leading-relaxed text-slate">
               This guide is built around six stages. You don't need to
@@ -45,22 +46,22 @@ export default function GetStarted() {
               you're behind.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              <div className="rounded-xl bg-card p-5">
+              <Reveal delay={0} className="rounded-xl bg-card p-5">
                 <p className="font-display text-2xl font-bold text-stage-1">1–2</p>
                 <p className="mt-1 text-sm text-slate">Stages to figure out your strengths and interests</p>
-              </div>
-              <div className="rounded-xl bg-card p-5">
+              </Reveal>
+              <Reveal delay={100} className="rounded-xl bg-card p-5">
                 <p className="font-display text-2xl font-bold text-stage-1">3–4</p>
                 <p className="mt-1 text-sm text-slate">Stages to test ideas against the real world</p>
-              </div>
-              <div className="rounded-xl bg-card p-5">
+              </Reveal>
+              <Reveal delay={200} className="rounded-xl bg-card p-5">
                 <p className="font-display text-2xl font-bold text-stage-1">5–6</p>
                 <p className="mt-1 text-sm text-slate">Stages to organize everything into a plan</p>
-              </div>
+              </Reveal>
             </div>
-          </div>
+          </Reveal>
 
-          <div id="checklist">
+          <Reveal as="div" id="checklist">
             <h2 className="font-display text-xl font-semibold text-ink">Before you start</h2>
             <p className="mt-3 leading-relaxed text-slate">
               A little preparation makes the rest of the guide go faster.
@@ -75,15 +76,15 @@ export default function GetStarted() {
                 ]}
               />
             </div>
-          </div>
+          </Reveal>
 
-          <div id="tips">
+          <Reveal as="div" id="tips">
             <Callout label="Tip">
               There's no wrong way to begin. If you already have a career
               idea in mind, jump to the next stage and use it as a
               hypothesis to test rather than a fixed answer.
             </Callout>
-          </div>
+          </Reveal>
         </div>
       </section>
 

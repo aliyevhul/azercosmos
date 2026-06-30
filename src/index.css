@@ -89,3 +89,16 @@ button:focus-visible,
   opacity: 1;
   transform: scale(1);
 }
+
+/* Scroll-reveal: elements fade/slide in the first time they enter the
+   viewport (triggered via the Reveal component using IntersectionObserver). */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 650ms cubic-bezier(0.16, 1, 0.3, 1), transform 650ms cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

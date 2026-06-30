@@ -5,6 +5,7 @@ import TopicCard from "../components/TopicCard";
 import Checklist from "../components/Checklist";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
+import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
 
 const phases = [
@@ -45,18 +46,22 @@ export default function PracticalPhases() {
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
-          <p className="text-lg leading-relaxed text-slate">
+          <Reveal as="p" className="text-lg leading-relaxed text-slate">
             Reading about a job and doing it for a day are completely
             different experiences. This stage is about getting real
             information from real workplaces.
-          </p>
+          </Reveal>
 
           <h2 id="phases" className="mt-10 font-display text-xl font-semibold text-ink">
             Ways to get hands-on experience
           </h2>
           <div className="mt-6 space-y-4">
-            {phases.map((p) => (
-              <div key={p.title} className="flex flex-col gap-1 rounded-xl bg-card p-6 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
+            {phases.map((p, i) => (
+              <Reveal
+                key={p.title}
+                delay={i * 100}
+                className="flex flex-col gap-1 rounded-xl bg-card p-6 sm:flex-row sm:items-start sm:justify-between sm:gap-6"
+              >
                 <div>
                   <h3 className="font-display text-base font-semibold text-ink">{p.title}</h3>
                   <p className="mt-2 text-[15px] leading-relaxed text-slate">{p.description}</p>
@@ -64,7 +69,7 @@ export default function PracticalPhases() {
                 <span className="mt-2 inline-block shrink-0 rounded-full bg-stage-3/15 px-3 py-1 font-display text-xs font-semibold text-stage-3 sm:mt-0">
                   {p.length}
                 </span>
-              </div>
+              </Reveal>
             ))}
           </div>
 
@@ -81,20 +86,20 @@ export default function PracticalPhases() {
           </div>
 
           <h2 className="mt-12 font-display text-xl font-semibold text-ink">After it's over</h2>
-          <p className="mt-3 leading-relaxed text-slate">
+          <Reveal as="p" className="mt-3 leading-relaxed text-slate">
             The placement itself is only half the value — what you write
             down afterward is what actually informs your next decision. Use
             the reflection log from the documents page to capture what
             surprised you, what you'd want more of, and what you'd want to
             avoid.
-          </p>
+          </Reveal>
 
-          <div className="mt-10">
+          <Reveal as="div" className="mt-10">
             <Callout label="Tip">
               A placement that confirms a job isn't for you is just as
               useful as one that confirms it is. Both are progress.
             </Callout>
-          </div>
+          </Reveal>
         </div>
       </section>
 

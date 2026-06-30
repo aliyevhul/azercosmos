@@ -1,15 +1,16 @@
 import { Check } from "lucide-react";
+import Reveal from "./Reveal";
 
 export default function Checklist({ items }) {
   return (
     <ul className="grid gap-3 sm:grid-cols-2">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 rounded-xl bg-card p-4">
+      {items.map((item, i) => (
+        <Reveal as="li" key={item} delay={i * 70} className="flex items-start gap-3 rounded-xl bg-card p-4">
           <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
             <Check size={13} strokeWidth={3} />
           </span>
           <span className="text-[15px] leading-snug text-ink">{item}</span>
-        </li>
+        </Reveal>
       ))}
     </ul>
   );

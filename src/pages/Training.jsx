@@ -4,6 +4,7 @@ import CategoryRow from "../components/CategoryRow";
 import TopicCard from "../components/TopicCard";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
+import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
 
 const routes = [
@@ -41,24 +42,24 @@ export default function Training() {
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-16 md:px-8 md:py-20">
-          <p className="text-lg leading-relaxed text-slate">
+          <Reveal as="p" className="text-lg leading-relaxed text-slate">
             Once you have a clearer sense of direction, compare how people
             actually get into that field — there's usually more than one
             route in.
-          </p>
+          </Reveal>
 
           <h2 id="routes" className="mt-10 font-display text-xl font-semibold text-ink">Common routes</h2>
           <div className="mt-6 space-y-4">
-            {routes.map((r) => (
-              <div key={r.title} className="rounded-xl bg-card p-6">
+            {routes.map((r, i) => (
+              <Reveal key={r.title} delay={i * 100} className="rounded-xl bg-card p-6">
                 <h3 className="font-display text-base font-semibold text-ink">{r.title}</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-slate">{r.description}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
 
           <h2 className="mt-12 font-display text-xl font-semibold text-ink">Questions to ask before choosing</h2>
-          <ul className="mt-5 space-y-3 text-[15px] leading-relaxed text-slate">
+          <Reveal as="ul" className="mt-5 space-y-3 text-[15px] leading-relaxed text-slate">
             <li className="border-b border-black/5 pb-3">
               What entry requirements does this route actually have, and do you meet them?
             </li>
@@ -71,15 +72,15 @@ export default function Training() {
             <li className="pb-1">
               What does someone two years into this route wish they'd known beforehand?
             </li>
-          </ul>
+          </Reveal>
 
-          <div className="mt-10">
+          <Reveal as="div" className="mt-10">
             <Callout label="Tip">
               Reach out to one person who's already on a route you're
               considering. A 15-minute conversation usually tells you more
               than an hour of reading.
             </Callout>
-          </div>
+          </Reveal>
         </div>
       </section>
 

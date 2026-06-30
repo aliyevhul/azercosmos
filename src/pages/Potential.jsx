@@ -4,6 +4,7 @@ import CategoryRow from "../components/CategoryRow";
 import TopicCard from "../components/TopicCard";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
+import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
 
 export default function Potential() {
@@ -25,7 +26,7 @@ export default function Potential() {
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl space-y-12 px-5 py-16 md:px-8 md:py-20">
-          <div id="assess-yourself">
+          <Reveal as="div" id="assess-yourself">
             <h2 className="font-display text-xl font-semibold text-ink">Three angles worth checking</h2>
             <p className="mt-3 leading-relaxed text-slate">
               Strengths, interests, and working style don't always point to
@@ -33,7 +34,7 @@ export default function Potential() {
               faster than guessing from a list of career names.
             </p>
             <div className="mt-6 space-y-4">
-              <div className="rounded-xl bg-card p-6">
+              <Reveal delay={0} className="rounded-xl bg-card p-6">
                 <h3 className="font-display text-base font-semibold text-ink">Strengths</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-slate">
                   What do people consistently ask you for help with? What
@@ -41,16 +42,16 @@ export default function Potential() {
                   Strengths are often invisible to the person who has them —
                   ask someone who knows you well.
                 </p>
-              </div>
-              <div className="rounded-xl bg-card p-6">
+              </Reveal>
+              <Reveal delay={100} className="rounded-xl bg-card p-6">
                 <h3 className="font-display text-base font-semibold text-ink">Interests</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-slate">
                   What do you read about, watch, or do without anyone
                   telling you to? Interests point at subject areas; they
                   don't have to map directly onto a job title yet.
                 </p>
-              </div>
-              <div className="rounded-xl bg-card p-6">
+              </Reveal>
+              <Reveal delay={200} className="rounded-xl bg-card p-6">
                 <h3 className="font-display text-base font-semibold text-ink">Working style</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-slate">
                   Do you prefer working with people, data, objects, or
@@ -58,11 +59,11 @@ export default function Potential() {
                   shapes whether a job that matches your interests will
                   actually feel good day to day.
                 </p>
-              </div>
+              </Reveal>
             </div>
-          </div>
+          </Reveal>
 
-          <div id="assessment">
+          <Reveal as="div" id="assessment">
             <h2 className="font-display text-xl font-semibold text-ink">A short exercise</h2>
             <p className="mt-3 leading-relaxed text-slate">
               Grab the worksheet from the documents page, then answer these
@@ -74,15 +75,15 @@ export default function Potential() {
               <li className="border-b border-black/5 pb-3">Describe your ideal Tuesday afternoon at work</li>
               <li className="pb-1">Name one thing you definitely don't want in a job</li>
             </ul>
-          </div>
+          </Reveal>
 
-          <div id="next-steps">
+          <Reveal as="div" id="next-steps">
             <Callout label="Tip">
               Don't filter your answers by what sounds impressive. "I'm good
               at calming people down" is just as useful here as "I'm good at
               math."
             </Callout>
-          </div>
+          </Reveal>
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import PageHero from "../components/PageHero";
 import StageNav from "../components/StageNav";
+import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
 import { documents } from "../data/documents";
 import { FileDown } from "lucide-react";
@@ -11,10 +12,10 @@ export default function Documents() {
 
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-16">
-          <p className="text-lg leading-relaxed text-slate">
+          <Reveal as="p" className="text-lg leading-relaxed text-slate">
             Worksheets and forms to download, print, and keep alongside your
             program. Replace these with your own files any time.
-          </p>
+          </Reveal>
         </div>
       </section>
 
@@ -25,11 +26,13 @@ export default function Documents() {
               <div key={group.category}>
                 <h2 className="font-display text-lg font-semibold text-ink">{group.category}</h2>
                 <div className="mt-4 space-y-3">
-                  {group.items.map((doc) => (
-                    <a
+                  {group.items.map((doc, i) => (
+                    <Reveal
+                      as="a"
                       key={doc.title}
                       href={doc.file}
                       download
+                      delay={i * 80}
                       className="btn-pop group flex items-start gap-4 rounded-xl bg-card p-5 transition-colors hover:bg-card-icon"
                     >
                       <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-stage-5/10 text-stage-5">
@@ -46,7 +49,7 @@ export default function Documents() {
                       <span className="mt-1 shrink-0 font-display text-xs font-semibold uppercase tracking-wide text-slate">
                         {doc.sizeLabel}
                       </span>
-                    </a>
+                    </Reveal>
                   ))}
                 </div>
               </div>
