@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color tokens — passport / official-document palette */
+  --color-ink: #14233D;        /* deep navy — passport cover, nav, headings */
+  --color-ink-light: #1F3454;
+  --color-paper: #FAF9F5;      /* page background */
+  --color-paper-dim: #F0EDE4;  /* card / section background */
+  --color-paper-line: #E2DDCF; /* hairlines on paper */
+  --color-brass: #C28E0E;      /* gold accent — stamps, highlights */
+  --color-brass-light: #E3B23D;
+  --color-stamp: #B7472A;      /* stamp red — secondary accent, CTA */
+  --color-stamp-dark: #8F3520;
+  --color-forest: #2F6B4F;     /* progress / success */
+  --color-slate: #5B6472;      /* muted text */
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Source Serif 4", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+/* Visible keyboard focus throughout */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-brass);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Perforated edge effect used on stamp/ticket elements */
+.perforated {
+  -webkit-mask-image: radial-gradient(circle 3px at 8px 8px, transparent 3px, black 3.5px);
+  -webkit-mask-size: 16px 16px;
+  -webkit-mask-repeat: round;
+  mask-image: radial-gradient(circle 3px at 8px 8px, transparent 3px, black 3.5px);
+  mask-size: 16px 16px;
+  mask-repeat: round;
+}
