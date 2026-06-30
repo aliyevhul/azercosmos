@@ -10,7 +10,7 @@ export default function StageNav({ prev, next }) {
       {prev ? (
         <Link
           to={prev.to}
-          className="inline-flex items-center gap-2 font-display text-sm font-medium text-slate hover:text-ink"
+          className="btn-pop inline-flex items-center gap-2 rounded-md px-3 py-2 font-display text-sm font-medium text-slate hover:text-ink"
         >
           <ArrowLeft size={16} />
           {prev.label}
@@ -21,7 +21,7 @@ export default function StageNav({ prev, next }) {
       {next ? (
         <Link
           to={next.to}
-          className="inline-flex items-center gap-2 rounded-md bg-stage-2 px-5 py-2.5 font-display text-sm font-semibold text-white hover:bg-stage-2/90"
+          className="btn-pop inline-flex items-center gap-2 rounded-md bg-stage-2 px-5 py-2.5 font-display text-sm font-semibold text-white hover:bg-stage-2/90"
         >
           {next.label}
           <ArrowRight size={16} />

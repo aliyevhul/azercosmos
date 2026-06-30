@@ -30,7 +30,7 @@ export default function Documents() {
                       key={doc.title}
                       href={doc.file}
                       download
-                      className="group flex items-start gap-4 rounded-xl bg-card p-5 transition-colors hover:bg-card-icon"
+                      className="btn-pop group flex items-start gap-4 rounded-xl bg-card p-5 transition-colors hover:bg-card-icon"
                     >
                       <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-stage-5/10 text-stage-5">
                         <FileDown size={18} />

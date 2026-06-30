@@ -39,7 +39,7 @@ export default function Navbar() {
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
-                      `inline-flex items-center rounded-md px-5 py-2.5 font-display text-sm font-semibold text-white transition-opacity ${c.bg} ${
+                      `btn-pop inline-flex items-center rounded-md px-5 py-2.5 font-display text-sm font-semibold text-white transition-opacity ${c.bg} ${
                         isActive ? "opacity-100 ring-2 ring-offset-2 ring-black/10" : "opacity-90 hover:opacity-100"
                       }`
                     }
@@ -73,7 +73,7 @@ export default function Navbar() {
                   <NavLink
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className={`block rounded-md px-4 py-2.5 text-center font-display text-sm font-semibold text-white ${c.bg}`}
+                    className={`btn-pop block rounded-md px-4 py-2.5 text-center font-display text-sm font-semibold text-white ${c.bg}`}
                   >
                     {item.label}
                   </NavLink>

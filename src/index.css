@@ -60,3 +60,32 @@ button:focus-visible,
     5% 48%, 0% 34%, 4% 20%
   );
 }
+
+/* Animated "pop" border used on nav buttons, CTAs, cards, and download
+   links — a halo outline that scales/fades in around the element and
+   lifts it slightly on hover or keyboard focus. */
+.btn-pop {
+  position: relative;
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 200ms ease;
+}
+.btn-pop::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 2px solid currentColor;
+  border-radius: inherit;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 200ms ease, transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+}
+.btn-pop:hover,
+.btn-pop:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px -6px rgb(0 0 0 / 0.25);
+}
+.btn-pop:hover::after,
+.btn-pop:focus-visible::after {
+  opacity: 1;
+  transform: scale(1);
+}

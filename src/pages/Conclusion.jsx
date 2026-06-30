@@ -45,7 +45,7 @@ export default function Conclusion() {
             </p>
             <Link
               to="/"
-              className="mt-2 inline-flex items-center gap-2 rounded-md bg-stage-6 px-6 py-3 font-display text-sm font-semibold text-white hover:bg-stage-6/90"
+              className="btn-pop mt-2 inline-flex items-center gap-2 rounded-md bg-stage-6 px-6 py-3 font-display text-sm font-semibold text-white hover:bg-stage-6/90"
             >
               Back to the overview
             </Link>

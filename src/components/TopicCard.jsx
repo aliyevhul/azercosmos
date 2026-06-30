@@ -6,7 +6,7 @@ export default function TopicCard({ icon: Icon, title, href, color = "stage-2" }
   return (
     <a
       href={href}
-      className="flex items-center justify-between gap-4 rounded-xl bg-card p-6 transition-colors hover:bg-card-icon"
+      className="btn-pop flex items-center justify-between gap-4 rounded-xl bg-card p-6 transition-colors hover:bg-card-icon"
     >
       <div>
         <h3 className="font-display text-lg font-semibold leading-snug text-ink">{title}</h3>
