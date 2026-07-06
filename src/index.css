@@ -15,6 +15,7 @@
   --color-paper: #FFFFFF;
   --color-card: #F2F2F3;      /* light gray card background */
   --color-card-icon: #E4E4E6; /* icon circle background */
+  --color-paper-dim: #EEECEA; /* slightly warmed off-white for hover states */
   --color-ink: #1F2328;       /* main body text */
   --color-slate: #5B6472;     /* muted/secondary text */
   --color-lime: #C7E021;      /* bright accent word in hero copy */

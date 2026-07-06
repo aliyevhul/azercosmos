@@ -1,8 +1,9 @@
 import PageHero from "../components/PageHero";
 import StageNav from "../components/StageNav";
 import Reveal from "../components/Reveal";
+import PageDownloads from "../components/PageDownloads";
 import { nav, site } from "../config/site";
-import { documents } from "../data/documents";
+import { documents, documentsByPage } from "../data/documents";
 import { FileDown } from "lucide-react";
 
 export default function Documents() {
@@ -13,8 +14,8 @@ export default function Documents() {
       <section className="bg-paper">
         <div className="mx-auto max-w-3xl px-5 py-14 md:px-8 md:py-16">
           <Reveal as="p" className="text-lg leading-relaxed text-slate">
-            Worksheets and forms to download, print, and keep alongside your
-            program. Replace these with your own files any time.
+            Every worksheet in the program is available here. Click any card to download and print it.
+            They're also available on each individual stage page.
           </Reveal>
         </div>
       </section>
@@ -24,15 +25,17 @@ export default function Documents() {
           <div className="space-y-12">
             {documents.map((group) => (
               <div key={group.category}>
-                <h2 className="font-display text-lg font-semibold text-ink">{group.category}</h2>
+                <Reveal>
+                  <h2 className="font-display text-lg font-semibold text-ink">{group.category}</h2>
+                </Reveal>
                 <div className="mt-4 space-y-3">
                   {group.items.map((doc, i) => (
                     <Reveal
                       as="a"
-                      key={doc.title}
+                      key={doc.file}
                       href={doc.file}
                       download
-                      delay={i * 80}
+                      delay={i * 70}
                       className="btn-pop group flex items-start gap-4 rounded-xl bg-card p-5 transition-colors hover:bg-card-icon"
                     >
                       <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-stage-5/10 text-stage-5">
@@ -46,8 +49,8 @@ export default function Documents() {
                           {doc.description}
                         </span>
                       </span>
-                      <span className="mt-1 shrink-0 font-display text-xs font-semibold uppercase tracking-wide text-slate">
-                        {doc.sizeLabel}
+                      <span className="mt-1 shrink-0 rounded-full bg-paper px-2 py-0.5 font-mono text-[11px] font-medium text-slate">
+                        {doc.pages}
                       </span>
                     </Reveal>
                   ))}
@@ -55,14 +58,11 @@ export default function Documents() {
               </div>
             ))}
           </div>
-
-          <div className="mt-12 rounded-xl border border-dashed border-black/15 p-6 text-sm text-slate">
-            <strong className="font-display text-ink">Customizing this list:</strong> add your
-            own PDFs to <code className="rounded bg-card px-1.5 py-0.5 font-mono text-xs">/public/documents/</code> and
-            list them in <code className="rounded bg-card px-1.5 py-0.5 font-mono text-xs">src/data/documents.js</code>.
-          </div>
         </div>
       </section>
+
+      {/* The Documents page's own specific worksheets (checklist + evidence log) */}
+      <PageDownloads items={documentsByPage.documents} color="stage-5" />
 
       <StageNav
         prev={{ to: nav[3].to, label: nav[3].label }}

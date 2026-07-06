@@ -6,6 +6,8 @@ import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
 import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
+import PageDownloads from "../components/PageDownloads";
+import { documentsByPage } from "../data/documents";
 
 const routes = [
   {
@@ -84,6 +86,7 @@ export default function Training() {
         </div>
       </section>
 
+      <PageDownloads items={documentsByPage.training} color="stage-4" />
       <StageNav
         prev={{ to: nav[2].to, label: nav[2].label }}
         next={{ to: nav[4].to, label: nav[4].label }}

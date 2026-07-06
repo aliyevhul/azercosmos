@@ -3,6 +3,8 @@ import PageHero from "../components/PageHero";
 import StageNav from "../components/StageNav";
 import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
+import PageDownloads from "../components/PageDownloads";
+import { documentsByPage } from "../data/documents";
 
 export default function Conclusion() {
   return (
@@ -54,6 +56,7 @@ export default function Conclusion() {
         </div>
       </section>
 
+      <PageDownloads items={documentsByPage.conclusion} color="stage-6" />
       <StageNav prev={{ to: nav[4].to, label: nav[4].label }} />
     </>
   );

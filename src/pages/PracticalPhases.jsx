@@ -7,6 +7,8 @@ import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
 import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
+import PageDownloads from "../components/PageDownloads";
+import { documentsByPage } from "../data/documents";
 
 const phases = [
   {
@@ -103,6 +105,7 @@ export default function PracticalPhases() {
         </div>
       </section>
 
+      <PageDownloads items={documentsByPage.practicalPhases} color="stage-3" />
       <StageNav
         prev={{ to: nav[1].to, label: nav[1].label }}
         next={{ to: nav[3].to, label: nav[3].label }}

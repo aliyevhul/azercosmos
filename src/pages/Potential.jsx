@@ -6,6 +6,8 @@ import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
 import Reveal from "../components/Reveal";
 import { nav, site } from "../config/site";
+import PageDownloads from "../components/PageDownloads";
+import { documentsByPage } from "../data/documents";
 
 export default function Potential() {
   return (
@@ -87,6 +89,7 @@ export default function Potential() {
         </div>
       </section>
 
+      <PageDownloads items={documentsByPage.potential} color="stage-2" />
       <StageNav
         prev={{ to: nav[0].to, label: nav[0].label }}
         next={{ to: nav[2].to, label: nav[2].label }}

@@ -6,7 +6,9 @@ import Checklist from "../components/Checklist";
 import Callout from "../components/Callout";
 import StageNav from "../components/StageNav";
 import Reveal from "../components/Reveal";
+import PageDownloads from "../components/PageDownloads";
 import { nav, site } from "../config/site";
+import { documentsByPage } from "../data/documents";
 
 export default function GetStarted() {
   return (
@@ -88,6 +90,7 @@ export default function GetStarted() {
         </div>
       </section>
 
+      <PageDownloads items={documentsByPage.getStarted} color="stage-1" />
       <StageNav next={{ to: nav[1].to, label: nav[1].label }} />
     </>
   );
