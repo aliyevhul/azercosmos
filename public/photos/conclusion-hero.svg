@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <radialGradient id="bg6" cx="45%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#8a1818"/>
+      <stop offset="100%" stop-color="#4a0808"/>
+    </radialGradient>
+    <radialGradient id="targetGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#e6b84e" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#e6b84e" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg6)"/>
+
+  <!-- Background glow -->
+  <ellipse cx="650" cy="400" rx="450" ry="350" fill="url(#targetGlow)"/>
+
+  <!-- Bullseye target - central -->
+  <g transform="translate(650, 400)">
+    <!-- Outer rings -->
+    <circle cx="0" cy="0" r="240" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="2" opacity="0.2"/>
+    <circle cx="0" cy="0" r="200" fill="rgba(255,255,255,0.06)" stroke="white" stroke-width="2.5" opacity="0.25"/>
+    <circle cx="0" cy="0" r="160" fill="rgba(255,255,255,0.07)" stroke="white" stroke-width="3" opacity="0.3"/>
+    <circle cx="0" cy="0" r="120" fill="rgba(255,255,255,0.09)" stroke="white" stroke-width="3" opacity="0.35"/>
+    <circle cx="0" cy="0" r="80"  fill="rgba(255,255,255,0.12)" stroke="white" stroke-width="3.5" opacity="0.45"/>
+    <circle cx="0" cy="0" r="42"  fill="#e6b84e" opacity="0.7"/>
+    <circle cx="0" cy="0" r="20"  fill="#e6b84e" opacity="0.9"/>
+    <circle cx="0" cy="0" r="8"   fill="white"/>
+
+    <!-- Arrow in the bullseye -->
+    <line x1="280" y1="-280" x2="30" y2="-15" stroke="#e6b84e" stroke-width="5" opacity="0.6"/>
+    <polygon points="15,-5 40,-35 50,-5" fill="#e6b84e" opacity="0.7"/>
+    <!-- Arrow tail feathers -->
+    <g transform="translate(285,-275) rotate(-45)">
+      <rect x="-3" y="0" width="6" height="25" fill="white" opacity="0.4"/>
+      <rect x="6" y="5" width="14" height="4" fill="white" opacity="0.3" transform="rotate(-30)"/>
+      <rect x="-20" y="5" width="14" height="4" fill="white" opacity="0.3" transform="rotate(30)"/>
+    </g>
+  </g>
+
+  <!-- Trophy - left -->
+  <g transform="translate(230, 420)">
+    <!-- Shadow -->
+    <ellipse cx="5" cy="200" rx="80" ry="12" fill="#0f0505" opacity="0.2"/>
+
+    <!-- Cup body -->
+    <path d="M -80 -100 Q -90 -20 -50 30 Q -20 65 0 70 Q 20 65 50 30 Q 90 -20 80 -100 Z"
+          fill="#e6b84e" opacity="0.85"/>
+    <!-- Cup shine -->
+    <path d="M -60 -90 Q -70 -30 -45 15" fill="none" stroke="white" stroke-width="6" stroke-linecap="round" opacity="0.3"/>
+
+    <!-- Handles -->
+    <path d="M -80 -80 Q -130 -80 -125 -30 Q -120 10 -80 10" fill="none" stroke="#e6b84e" stroke-width="12" stroke-linecap="round" opacity="0.8"/>
+    <path d="M  80 -80 Q  130 -80  125 -30 Q  120 10  80 10" fill="none" stroke="#e6b84e" stroke-width="12" stroke-linecap="round" opacity="0.8"/>
+
+    <!-- Base stem -->
+    <rect x="-15" y="70" width="30" height="50" fill="#c89820" opacity="0.7" rx="4"/>
+    <!-- Base plate -->
+    <rect x="-60" y="120" width="120" height="20" fill="#c89820" opacity="0.8" rx="6"/>
+    <rect x="-70" y="140" width="140" height="12" fill="#b07810" opacity="0.75" rx="6"/>
+
+    <!-- Star on trophy -->
+    <polygon points="0,-55 9,-30 35,-30 15,-12 22,15 0,0 -22,15 -15,-12 -35,-30 -9,-30"
+             fill="white" opacity="0.45"/>
+  </g>
+
+  <!-- Checkmark circle - upper right -->
+  <g transform="translate(1000, 260)">
+    <!-- Outer ring glow -->
+    <circle cx="0" cy="0" r="110" fill="white" opacity="0.05"/>
+    <!-- Ring -->
+    <circle cx="0" cy="0" r="90" fill="rgba(255,255,255,0.08)" stroke="white" stroke-width="4" opacity="0.4"/>
+    <!-- Large checkmark -->
+    <polyline points="-45,5 -15,38 52,-38"
+              fill="none" stroke="white" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+  </g>
+
+  <!-- Rising arrow - bottom center -->
+  <g transform="translate(370, 650)" opacity="0.35">
+    <!-- Bar chart rising -->
+    <rect x="0"   y="0"   width="35" height="60"  fill="white" rx="4"/>
+    <rect x="50"  y="-40" width="35" height="100" fill="white" rx="4"/>
+    <rect x="100" y="-90" width="35" height="150" fill="white" rx="4"/>
+    <rect x="150" y="-130" width="35" height="190" fill="white" rx="4"/>
+    <!-- Trend arrow -->
+    <polyline points="-10,-30 50,-70 100,-120 200,-170"
+              fill="none" stroke="#e6b84e" stroke-width="4" stroke-linecap="round" opacity="0.7"/>
+    <polygon points="200,-170 180,-180 195,-155" fill="#e6b84e" opacity="0.7"/>
+  </g>
+
+  <!-- Stars decoration -->
+  <g fill="#e6b84e">
+    <polygon points="120,120 126,110 132,120 124,127 130,137 120,131 110,137 116,127 108,120 114,110"
+             opacity="0.4" transform="scale(0.6) translate(20,20)"/>
+    <polygon points="1080,680 1087,668 1094,680 1085,688 1092,700 1080,693 1068,700 1075,688 1066,680 1073,668"
+             opacity="0.35" transform="scale(0.8)"/>
+  </g>
+</svg>

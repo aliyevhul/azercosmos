@@ -28,7 +28,7 @@ export default function Hero({ lines, accentIndex = -1, bgClass = "bg-hero-dark"
           }`}
         >
           {image ? (
-            <img src={image} alt="" className="h-full w-full object-cover" />
+            <img src={image} alt="" className="h-full w-full object-cover" style={{objectPosition: "center"}} />
           ) : (
             <div className="flex flex-col items-center gap-2 text-white/50">
               <ImagePlus size={32} strokeWidth={1.5} />

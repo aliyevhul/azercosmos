@@ -54,13 +54,13 @@ export const site = {
   // landscape orientation — it's cropped to fill the box automatically.
   // Leave as null to show the "Add your own photo" placeholder.
   heroImages: {
-    home: null,
-    getStarted: null,
-    potential: null,
-    practicalPhases: null,
-    training: null,
-    documents: null,
-    conclusion: null,
+    home:           "/photos/home-hero.svg",
+    getStarted:     "/photos/get-started-hero.svg",
+    potential:      "/photos/potential-hero.svg",
+    practicalPhases:"/photos/practical-hero.svg",
+    training:       "/photos/training-hero.svg",
+    documents:      "/photos/documents-hero.svg",
+    conclusion:     "/photos/conclusion-hero.svg",
   },
 };
 

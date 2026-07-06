@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <radialGradient id="bg2" cx="55%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#1a6fb5"/>
+      <stop offset="100%" stop-color="#0d3d6e"/>
+    </radialGradient>
+    <radialGradient id="bulbglow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe566" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffe566" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bulbinner" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fffacd"/>
+      <stop offset="100%" stop-color="#f0c040"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg2)"/>
+
+  <!-- Soft radial background -->
+  <ellipse cx="600" cy="380" rx="500" ry="380" fill="white" opacity="0.03"/>
+
+  <!-- Glow behind bulb -->
+  <ellipse cx="600" cy="330" rx="220" ry="220" fill="url(#bulbglow)"/>
+
+  <!-- Light rays -->
+  <g stroke="#ffe566" stroke-width="2" opacity="0.18">
+    <line x1="600" y1="80"  x2="600" y2="20"/>
+    <line x1="600" y1="80"  x2="660" y2="25"/>
+    <line x1="600" y1="80"  x2="540" y2="25"/>
+    <line x1="600" y1="80"  x2="720" y2="55"/>
+    <line x1="600" y1="80"  x2="480" y2="55"/>
+    <line x1="600" y1="80"  x2="750" y2="100"/>
+    <line x1="600" y1="80"  x2="450" y2="100"/>
+  </g>
+
+  <!-- Lightbulb body -->
+  <g transform="translate(600, 300)">
+    <!-- Glow circle -->
+    <circle cx="0" cy="-20" r="140" fill="url(#bulbglow)"/>
+
+    <!-- Bulb glass -->
+    <path d="M -80 10 Q -85 -60 -40 -120 Q 0 -160 0 -160 Q 0 -160 40 -120 Q 85 -60 80 10 Z"
+          fill="url(#bulbinner)" opacity="0.9"/>
+
+    <!-- Shine on bulb -->
+    <ellipse cx="-25" cy="-110" rx="18" ry="28" fill="white" opacity="0.35" transform="rotate(-20,-25,-110)"/>
+
+    <!-- Filament -->
+    <path d="M -25 10 Q -25 -20 0 -20 Q 25 -20 25 10" fill="none" stroke="#c08000" stroke-width="3" opacity="0.6"/>
+    <circle cx="0" cy="-20" r="5" fill="#f0c040" opacity="0.9"/>
+
+    <!-- Base ridges -->
+    <rect x="-40" y="10" width="80" height="14" fill="#c08000" opacity="0.6" rx="4"/>
+    <rect x="-35" y="24" width="70" height="12" fill="#c08000" opacity="0.5" rx="3"/>
+    <rect x="-30" y="36" width="60" height="10" fill="#c08000" opacity="0.4" rx="3"/>
+
+    <!-- Screw -->
+    <rect x="-28" y="46" width="56" height="20" fill="#b07000" opacity="0.45" rx="3"/>
+  </g>
+
+  <!-- Left gear - large -->
+  <g transform="translate(300, 420)">
+    <circle cx="0" cy="0" r="80" fill="none" stroke="white" stroke-width="3" opacity="0.2"/>
+    <circle cx="0" cy="0" r="55" fill="rgba(255,255,255,0.05)" stroke="white" stroke-width="2" opacity="0.15"/>
+    <circle cx="0" cy="0" r="22" fill="rgba(255,255,255,0.1)" stroke="white" stroke-width="2" opacity="0.2"/>
+    <!-- Gear teeth -->
+    <g fill="white" opacity="0.18">
+      <rect x="-8" y="-88" width="16" height="20" rx="3"/>
+      <rect x="-8" y="68"  width="16" height="20" rx="3"/>
+      <g transform="rotate(45)"><rect x="-8" y="-88" width="16" height="20" rx="3"/></g>
+      <g transform="rotate(90)"><rect x="-8" y="-88" width="16" height="20" rx="3"/></g>
+      <g transform="rotate(135)"><rect x="-8" y="-88" width="16" height="20" rx="3"/></g>
+      <g transform="rotate(180)"><rect x="-8" y="-88" width="16" height="20" rx="3"/></g>
+      <g transform="rotate(225)"><rect x="-8" y="-88" width="16" height="20" rx="3"/></g>
+      <g transform="rotate(270)"><rect x="-8" y="-88" width="16" height="20" rx="3"/></g>
+    </g>
+    <text x="0" y="7" text-anchor="middle" fill="white" opacity="0.3" font-family="Arial" font-size="14" font-weight="bold">⚙</text>
+  </g>
+
+  <!-- Right gear - smaller -->
+  <g transform="translate(900, 380)">
+    <circle cx="0" cy="0" r="55" fill="none" stroke="white" stroke-width="2" opacity="0.2"/>
+    <circle cx="0" cy="0" r="38" fill="rgba(255,255,255,0.04)" stroke="white" stroke-width="1.5" opacity="0.15"/>
+    <circle cx="0" cy="0" r="16" fill="rgba(255,255,255,0.08)" stroke="white" stroke-width="1.5" opacity="0.15"/>
+    <g fill="white" opacity="0.18">
+      <rect x="-6" y="-61" width="12" height="15" rx="2"/>
+      <g transform="rotate(45)"><rect x="-6" y="-61" width="12" height="15" rx="2"/></g>
+      <g transform="rotate(90)"><rect x="-6" y="-61" width="12" height="15" rx="2"/></g>
+      <g transform="rotate(135)"><rect x="-6" y="-61" width="12" height="15" rx="2"/></g>
+      <g transform="rotate(180)"><rect x="-6" y="-61" width="12" height="15" rx="2"/></g>
+      <g transform="rotate(225)"><rect x="-6" y="-61" width="12" height="15" rx="2"/></g>
+      <g transform="rotate(270)"><rect x="-6" y="-61" width="12" height="15" rx="2"/></g>
+      <g transform="rotate(315)"><rect x="-6" y="-61" width="12" height="15" rx="2"/></g>
+    </g>
+  </g>
+
+  <!-- Growing plant - bottom right -->
+  <g transform="translate(950, 700)">
+    <!-- Soil line -->
+    <rect x="-60" y="0" width="120" height="8" fill="white" opacity="0.15" rx="4"/>
+    <!-- Stem -->
+    <path d="M 0 0 Q -10 -60 5 -130 Q 15 -190 0 -240" fill="none" stroke="#4caf50" stroke-width="5" opacity="0.7"/>
+    <!-- Leaves -->
+    <ellipse cx="-30" cy="-120" rx="40" ry="22" fill="#4caf50" opacity="0.6" transform="rotate(-30,-30,-120)"/>
+    <ellipse cx="35"  cy="-170" rx="38" ry="20" fill="#66bb6a" opacity="0.65" transform="rotate(25,35,-170)"/>
+    <ellipse cx="-20" cy="-210" rx="30" ry="16" fill="#81c784" opacity="0.6" transform="rotate(-15,-20,-210)"/>
+    <!-- Top bud -->
+    <circle cx="0" cy="-245" r="14" fill="#a5d6a7" opacity="0.75"/>
+    <circle cx="0" cy="-255" r="8"  fill="#c8e6c9" opacity="0.8"/>
+  </g>
+
+  <!-- Stars/sparkles around the bulb -->
+  <g fill="#ffe566" opacity="0.55">
+    <circle cx="450" cy="180" r="4"/>
+    <circle cx="740" cy="175" r="3.5"/>
+    <circle cx="420" cy="300" r="3"/>
+    <circle cx="790" cy="290" r="4"/>
+    <circle cx="500" cy="500" r="3"/>
+    <circle cx="710" cy="510" r="3.5"/>
+  </g>
+</svg>

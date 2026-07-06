@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+  <defs>
+    <radialGradient id="bg1" cx="40%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#1e3a5f"/>
+      <stop offset="100%" stop-color="#0f1f35"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bg1)"/>
+
+  <!-- Subtle grid lines -->
+  <g stroke="white" stroke-width="0.5" opacity="0.04">
+    <line x1="0" y1="200" x2="1200" y2="200"/>
+    <line x1="0" y1="400" x2="1200" y2="400"/>
+    <line x1="0" y1="600" x2="1200" y2="600"/>
+    <line x1="300" y1="0" x2="300" y2="800"/>
+    <line x1="600" y1="0" x2="600" y2="800"/>
+    <line x1="900" y1="0" x2="900" y2="800"/>
+  </g>
+
+  <!-- Dotted road -->
+  <path d="M 100 800 L 500 400 L 750 300" fill="none" stroke="white" stroke-width="3" stroke-dasharray="12 8" opacity="0.2"/>
+
+  <!-- Road glow -->
+  <path d="M 100 800 L 500 400 L 750 300" fill="none" stroke="#7ab3e0" stroke-width="8" opacity="0.07"/>
+
+  <!-- Waypoint circles along road -->
+  <circle cx="200" cy="700" r="8" fill="white" opacity="0.15"/>
+  <circle cx="350" cy="560" r="8" fill="white" opacity="0.2"/>
+  <circle cx="500" cy="420" r="10" fill="#4a90d9" opacity="0.5"/>
+  <circle cx="620" cy="355" r="8" fill="white" opacity="0.2"/>
+  <circle cx="750" cy="300" r="10" fill="#e6b84e" opacity="0.7"/>
+
+  <!-- Compass -->
+  <g transform="translate(860, 400)">
+    <!-- Outer decorative ring -->
+    <circle cx="0" cy="0" r="220" fill="rgba(255,255,255,0.03)" stroke="#4a90d9" stroke-width="2" opacity="0.3"/>
+    <circle cx="0" cy="0" r="185" fill="rgba(255,255,255,0.04)" stroke="white" stroke-width="1" opacity="0.15"/>
+
+    <!-- Degree markers -->
+    <g stroke="white" opacity="0.2">
+      <line x1="0" y1="-183" x2="0" y2="-173"/>
+      <line x1="183" y1="0" x2="173" y2="0"/>
+      <line x1="0" y1="183" x2="0" y2="173"/>
+      <line x1="-183" y1="0" x2="-173" y2="0"/>
+      <line x1="130" y1="-130" x2="123" y2="-123"/>
+      <line x1="130" y1="130" x2="123" y2="123"/>
+      <line x1="-130" y1="130" x2="-123" y2="123"/>
+      <line x1="-130" y1="-130" x2="-123" y2="-123"/>
+    </g>
+
+    <!-- N arrow - gold pointing up -->
+    <polygon points="0,-140 -15,0 0,25 15,0" fill="#e6b84e" opacity="0.95"/>
+    <!-- S arrow - dimmed -->
+    <polygon points="0,140 -15,0 0,-25 15,0" fill="white" opacity="0.2"/>
+    <!-- E arrow -->
+    <polygon points="140,0 0,-15 -25,0 0,15" fill="white" opacity="0.2"/>
+    <!-- W arrow -->
+    <polygon points="-140,0 0,-15 25,0 0,15" fill="white" opacity="0.2"/>
+
+    <!-- Center -->
+    <circle cx="0" cy="0" r="20" fill="#1e3a5f" stroke="#e6b84e" stroke-width="2"/>
+    <circle cx="0" cy="0" r="8" fill="#e6b84e"/>
+
+    <!-- Cardinal letters -->
+    <text x="0"    y="-158" text-anchor="middle" fill="#e6b84e" font-family="Arial, sans-serif" font-size="22" font-weight="bold">N</text>
+    <text x="0"    y="175"  text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" opacity="0.4">S</text>
+    <text x="160"  y="6"    text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" opacity="0.4">E</text>
+    <text x="-160" y="6"    text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" opacity="0.4">W</text>
+  </g>
+
+  <!-- Signpost -->
+  <g transform="translate(200, 350)">
+    <!-- Post -->
+    <rect x="-5" y="0" width="10" height="280" fill="white" opacity="0.3" rx="3"/>
+
+    <!-- Sign 1 -->
+    <g transform="translate(0, 40)">
+      <rect x="10" y="-22" width="200" height="44" fill="#1A6FB5" opacity="0.85" rx="5"/>
+      <polygon points="10,-22 10,22 0,0" fill="#1A6FB5" opacity="0.85"/>
+      <text x="110" y="6" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="18" font-weight="bold">GET STARTED</text>
+    </g>
+
+    <!-- Sign 2 -->
+    <g transform="translate(0, 110)">
+      <rect x="10" y="-22" width="175" height="44" fill="#EFB81C" opacity="0.85" rx="5"/>
+      <polygon points="10,-22 10,22 0,0" fill="#EFB81C" opacity="0.85"/>
+      <text x="97" y="6" text-anchor="middle" fill="#0f1f35" font-family="Arial, sans-serif" font-size="17" font-weight="bold">POTENTIAL</text>
+    </g>
+
+    <!-- Sign 3 -->
+    <g transform="translate(0, 178)">
+      <rect x="10" y="-22" width="160" height="44" fill="#ED7D31" opacity="0.85" rx="5"/>
+      <polygon points="10,-22 10,22 0,0" fill="#ED7D31" opacity="0.85"/>
+      <text x="90" y="6" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">TRAINING</text>
+    </g>
+  </g>
+
+  <!-- Floating dots decoration -->
+  <circle cx="420" cy="180" r="3" fill="#e6b84e" opacity="0.5"/>
+  <circle cx="460" cy="220" r="2" fill="#e6b84e" opacity="0.35"/>
+  <circle cx="380" cy="230" r="2.5" fill="white" opacity="0.25"/>
+</svg>
