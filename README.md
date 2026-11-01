@@ -60,7 +60,11 @@ Drop your photos into `public/photos/`, then point `heroImages` in
 Recommended size: at least 1200×800px, landscape orientation — it's
 cropped automatically to fill the box (≈420×288px on the homepage,
 ≈420×192px on stage pages, both at desktop width). Leave a slot `null`
-to keep the "Add your own photo" placeholder.
+to keep the "Add your own photo" placeholder. A slot can also be an
+object — `{ src, alt, position }` — where `position` is a CSS
+object-position such as `"center 30%"` that keeps faces in frame after
+cropping. The current photos are free Unsplash photos; their source
+links are listed next to `heroImages` in `site.js`.
 
 **Colors**
 All six section colors, plus the navy/dark-hero tones, live in

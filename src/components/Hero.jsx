@@ -3,10 +3,15 @@ import { ImagePlus } from "lucide-react";
 // `bgClass` lets stage pages tint the hero with their own accent color
 // instead of the homepage's near-black. `lines` is an array of words/short
 // phrases stacked vertically in the marker font, mirroring the original's
-// big handwritten-style headline treatment. Pass `image` (a path under
-// /public) to replace the placeholder with a real photo — recommended
-// size: at least 1200x800px, landscape orientation.
+// big handwritten-style headline treatment. Pass `image` to replace the
+// placeholder with a real photo — either a path under /public, or an
+// object `{ src, alt, position }` where `position` is a CSS
+// object-position (e.g. "center 30%") to keep faces in frame when the
+// photo is cropped. Recommended size: at least 1200x800px, landscape.
 export default function Hero({ lines, accentIndex = -1, bgClass = "bg-hero-dark", compact = false, image = null }) {
+  const src = typeof image === "string" ? image : image?.src;
+  const alt = (typeof image === "object" && image?.alt) || "";
+  const position = (typeof image === "object" && image?.position) || "center";
   return (
     <section className={`${bgClass} relative overflow-hidden`}>
       <div
@@ -27,8 +32,8 @@ export default function Hero({ lines, accentIndex = -1, bgClass = "bg-hero-dark"
             compact ? "h-40 md:h-48" : "h-56 md:h-72"
           }`}
         >
-          {image ? (
-            <img src={image} alt="" className="h-full w-full object-cover" style={{objectPosition: "center"}} />
+          {src ? (
+            <img src={src} alt={alt} className="h-full w-full object-cover" style={{ objectPosition: position }} />
           ) : (
             <div className="flex flex-col items-center gap-2 text-white/50">
               <ImagePlus size={32} strokeWidth={1.5} />
