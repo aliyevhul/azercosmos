@@ -53,14 +53,44 @@ export const site = {
   // "/photos/home-hero.jpg". Recommended size: at least 1200x800px,
   // landscape orientation — it's cropped to fill the box automatically.
   // Leave as null to show the "Add your own photo" placeholder.
+  // Each entry can also be { src, alt, position } — `position` is a CSS
+  // object-position that keeps faces in frame when the photo is cropped.
+  //
+  // Current photos are from Unsplash (free to use under the Unsplash
+  // License, no attribution required):
+  //   home        https://unsplash.com/photos/iQPr1XkF5F0
+  //   practical   https://unsplash.com/photos/yEgqA9WydWU
+  //   training    https://unsplash.com/photos/r-W9R70iY5c
+  //   conclusion  https://unsplash.com/photos/138SbPvRzaQ
+  // Chosen but not added yet (these pages keep their illustration until
+  // the photo file is in /public/photos/):
+  //   getStarted  https://unsplash.com/photos/8VRfnLvCryY
+  //   potential   https://unsplash.com/photos/Ib3ocAKccyI
+  //   documents   https://unsplash.com/photos/n4_Q2dDYy80
   heroImages: {
-    home:           "/photos/home-hero.svg",
-    getStarted:     "/photos/get-started-hero.svg",
-    potential:      "/photos/potential-hero.svg",
-    practicalPhases:"/photos/practical-hero.svg",
-    training:       "/photos/training-hero.svg",
-    documents:      "/photos/documents-hero.svg",
-    conclusion:     "/photos/conclusion-hero.svg",
+    home: {
+      src: "/photos/home-hero.jpg",
+      alt: "Students in a classroom, one standing with her textbooks and backpack",
+      position: "center 35%",
+    },
+    getStarted: "/photos/get-started-hero.svg",
+    potential: "/photos/potential-hero.svg",
+    practicalPhases: {
+      src: "/photos/practical-hero.jpg",
+      alt: "A young student doing a lab experiment alongside a mentor",
+      position: "center 35%",
+    },
+    training: {
+      src: "/photos/training-hero.jpg",
+      alt: "A student with a laptop talking with an advisor",
+      position: "center 35%",
+    },
+    documents: "/photos/documents-hero.svg",
+    conclusion: {
+      src: "/photos/conclusion-hero.jpg",
+      alt: "Graduating students throwing their caps into the air",
+      position: "center 40%",
+    },
   },
 };
 
