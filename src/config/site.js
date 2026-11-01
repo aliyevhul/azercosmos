@@ -62,10 +62,10 @@ export const site = {
   //   practical   https://unsplash.com/photos/yEgqA9WydWU
   //   training    https://unsplash.com/photos/r-W9R70iY5c
   //   conclusion  https://unsplash.com/photos/138SbPvRzaQ
+  //   potential   supplied by the site owner
   // Chosen but not added yet (these pages keep their illustration until
   // the photo file is in /public/photos/):
   //   getStarted  https://unsplash.com/photos/8VRfnLvCryY
-  //   potential   https://unsplash.com/photos/Ib3ocAKccyI
   //   documents   https://unsplash.com/photos/n4_Q2dDYy80
   heroImages: {
     home: {
@@ -74,7 +74,11 @@ export const site = {
       position: "center 35%",
     },
     getStarted: "/photos/get-started-hero.svg",
-    potential: "/photos/potential-hero.svg",
+    potential: {
+      src: "/photos/potential-hero.jpg",
+      alt: "Pupils gathered around a table watching a hands-on science experiment",
+      position: "center 35%",
+    },
     practicalPhases: {
       src: "/photos/practical-hero.jpg",
       alt: "A young student doing a lab experiment alongside a mentor",
