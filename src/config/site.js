@@ -59,28 +59,22 @@ export const site = {
   // Current photos are from Unsplash (free to use under the Unsplash
   // License, no attribution required):
   //   home        https://unsplash.com/photos/iQPr1XkF5F0
-  //   getStarted  https://unsplash.com/photos/8VRfnLvCryY
-  //   potential   https://unsplash.com/photos/Ib3ocAKccyI
   //   practical   https://unsplash.com/photos/yEgqA9WydWU
   //   training    https://unsplash.com/photos/r-W9R70iY5c
-  //   documents   https://unsplash.com/photos/n4_Q2dDYy80
   //   conclusion  https://unsplash.com/photos/138SbPvRzaQ
+  // Chosen but not added yet (these pages keep their illustration until
+  // the photo file is in /public/photos/):
+  //   getStarted  https://unsplash.com/photos/8VRfnLvCryY
+  //   potential   https://unsplash.com/photos/Ib3ocAKccyI
+  //   documents   https://unsplash.com/photos/n4_Q2dDYy80
   heroImages: {
     home: {
       src: "/photos/home-hero.jpg",
       alt: "Students in a classroom, one standing with her textbooks and backpack",
       position: "center 35%",
     },
-    getStarted: {
-      src: "/photos/get-started-hero.jpg",
-      alt: "Teenage students sitting around a table, listening during a class session",
-      position: "center 40%",
-    },
-    potential: {
-      src: "/photos/potential-hero.jpg",
-      alt: "Three girls building and testing a robot together",
-      position: "center 30%",
-    },
+    getStarted: "/photos/get-started-hero.svg",
+    potential: "/photos/potential-hero.svg",
     practicalPhases: {
       src: "/photos/practical-hero.jpg",
       alt: "A young student doing a lab experiment alongside a mentor",
@@ -91,11 +85,7 @@ export const site = {
       alt: "A student with a laptop talking with an advisor",
       position: "center 35%",
     },
-    documents: {
-      src: "/photos/documents-hero.jpg",
-      alt: "A student in a suit reviewing documents in his folder",
-      position: "center 25%",
-    },
+    documents: "/photos/documents-hero.svg",
     conclusion: {
       src: "/photos/conclusion-hero.jpg",
       alt: "Graduating students throwing their caps into the air",
