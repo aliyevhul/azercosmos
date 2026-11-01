@@ -62,18 +62,20 @@ export const site = {
   //   practical   https://unsplash.com/photos/yEgqA9WydWU
   //   training    https://unsplash.com/photos/r-W9R70iY5c
   //   conclusion  https://unsplash.com/photos/138SbPvRzaQ
-  //   potential   supplied by the site owner
-  // Chosen but not added yet (these pages keep their illustration until
-  // the photo file is in /public/photos/):
   //   getStarted  https://unsplash.com/photos/8VRfnLvCryY
   //   documents   https://unsplash.com/photos/n4_Q2dDYy80
+  //   potential   supplied by the site owner
   heroImages: {
     home: {
       src: "/photos/home-hero.jpg",
       alt: "Students in a classroom, one standing with her textbooks and backpack",
       position: "center 35%",
     },
-    getStarted: "/photos/get-started-hero.svg",
+    getStarted: {
+      src: "/photos/get-started-hero.jpg",
+      alt: "Teenage students sitting around a table, listening during a class session",
+      position: "center",
+    },
     potential: {
       src: "/photos/potential-hero.jpg",
       alt: "Pupils gathered around a table watching a hands-on science experiment",
@@ -89,7 +91,11 @@ export const site = {
       alt: "A student with a laptop talking with an advisor",
       position: "center 35%",
     },
-    documents: "/photos/documents-hero.svg",
+    documents: {
+      src: "/photos/documents-hero.jpg",
+      alt: "A student in a suit reviewing documents in his folder",
+      position: "center 30%",
+    },
     conclusion: {
       src: "/photos/conclusion-hero.jpg",
       alt: "Graduating students throwing their caps into the air",
