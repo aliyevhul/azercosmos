@@ -34,16 +34,19 @@ export const site = {
   ],
 
   // The "supported by" grid further down — sponsors, partner employers, etc.
-  // Placeholders below; replace with your own logo files.
+  // Logo files live in /public/logo/supporters/ (transparent PNGs, trimmed
+  // to the logo's edges). `height` is the display height in px: wide
+  // wordmarks get less height and compact emblems more, so every logo
+  // carries about the same visual weight. `href` is optional — leave it
+  // out and the logo shows without a link.
   supporters: [
-    { name: "Logo 1", src: "/logo/supporter-1.svg", href: "#" },
-    { name: "Logo 2", src: "/logo/supporter-2.svg", href: "#" },
-    { name: "Logo 3", src: "/logo/supporter-3.svg", href: "#" },
-    { name: "Logo 4", src: "/logo/supporter-4.svg", href: "#" },
-    { name: "Logo 5", src: "/logo/supporter-5.svg", href: "#" },
-    { name: "Logo 6", src: "/logo/supporter-6.svg", href: "#" },
-    { name: "Logo 7", src: "/logo/supporter-7.svg", href: "#" },
-    { name: "Logo 8", src: "/logo/supporter-8.svg", href: "#" },
+    { name: "Lab of Future", src: "/logo/supporters/lab-of-future.png", height: 42 },
+    { name: "GUHEM – Gökmen Space & Aviation Training Center", src: "/logo/supporters/guhem.png", height: 43, href: "https://www.guhem.org.tr" },
+    { name: "Mohammed Bin Rashid Space Centre", src: "/logo/supporters/mbrsc.png", height: 55, href: "https://www.mbrsc.ae" },
+    { name: "Leonardo", src: "/logo/supporters/leonardo.png", height: 36, href: "https://www.leonardo.com" },
+    { name: "NASA", src: "/logo/supporters/nasa.png", height: 70, href: "https://www.nasa.gov" },
+    { name: "JAXA", src: "/logo/supporters/jaxa.png", height: 62, href: "https://global.jaxa.jp" },
+    { name: "Israel Space Agency", src: "/logo/supporters/isa.png", height: 66, href: "https://www.gov.il/en/departments/units/most_isa1" },
   ],
 
   copyrightHolder: "Space Academy",

@@ -34,9 +34,11 @@ Pages, Cloudflare Pages, or any static host.
 - `name`, `taglineWords` — site name and the three-word tagline under the logo
 - `logoSrc` — path to your logo (see below)
 - `nav` — the six sections, each with a `color` token (`stage-1` … `stage-6`)
-- `initiativePartners`, `supporters` — the two logo strips on the homepage
-  (currently filled with placeholder boxes so the layout previews fully —
-  swap these out first)
+- `initiativePartners`, `supporters` — the two logo strips on the homepage.
+  `supporters` holds the real partner logos (files in
+  `public/logo/supporters/`, each with a display `height` that balances
+  wide wordmarks against compact emblems). `initiativePartners` still
+  uses placeholder boxes — swap those out next.
 
 **Your logo**
 1. Drop your logo file into `public/logo/`
