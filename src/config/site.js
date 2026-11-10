@@ -25,13 +25,10 @@ export const site = {
 
   // The "is an initiative of" band — usually the organization(s) that
   // own/publish the site. 1-3 logos works best. Files go in /public/logo/
-  // These are placeholders so the layout previews correctly — replace with
-  // your own logo file(s) (use a light/white version, since this band has
-  // a dark navy background).
-  initiativePartners: [
-    { name: "Partner Logo 1", src: "/logo/initiative-1.svg", href: "#" },
-    { name: "Partner Logo 2", src: "/logo/initiative-2.svg", href: "#" },
-  ],
+  // Empty for now, so the band is hidden. To show it, add entries like
+  //   { name: "Space Academy", src: "/logo/your-logo-white.png", href: "https://…" }
+  // (use a light/white version, since this band has a dark navy background).
+  initiativePartners: [],
 
   // The "supported by" grid further down — sponsors, partner employers, etc.
   // Logo files live in /public/logo/supporters/ (transparent PNGs, trimmed

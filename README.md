@@ -37,8 +37,9 @@ Pages, Cloudflare Pages, or any static host.
 - `initiativePartners`, `supporters` — the two logo strips on the homepage.
   `supporters` holds the real partner logos (files in
   `public/logo/supporters/`, each with a display `height` that balances
-  wide wordmarks against compact emblems). `initiativePartners` still
-  uses placeholder boxes — swap those out next.
+  wide wordmarks against compact emblems). `initiativePartners` is empty,
+  which hides the navy "initiative of" band — add a light/white logo
+  there to bring it back.
 
 **Your logo**
 1. Drop your logo file into `public/logo/`
