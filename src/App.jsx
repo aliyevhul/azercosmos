@@ -8,6 +8,7 @@ import Training from "./pages/Training";
 import Documents from "./pages/Documents";
 import Conclusion from "./pages/Conclusion";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Admin from "./pages/Admin";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/documents" element={<Documents />} />
         <Route path="/conclusion" element={<Conclusion />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/admin" element={<Admin />} />
       </Route>
     </Routes>
   );
