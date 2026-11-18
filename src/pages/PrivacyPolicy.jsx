@@ -10,13 +10,13 @@ export default function PrivacyPolicy() {
             Legal
           </p>
           <h1 className="mt-2 font-display text-3xl font-bold text-ink">Privacy Policy</h1>
-          <p className="mt-2 text-sm text-slate">Last updated: June 2026</p>
+          <p className="mt-2 text-sm text-slate">Last updated: November 2026</p>
         </Reveal>
 
         <Reveal delay={80} className="mt-8 rounded-xl border border-dashed border-black/15 bg-card p-5 text-sm leading-relaxed text-slate">
-          This is a general-purpose privacy policy template written to match
-          a typical static, informational website aimed at students. It
-          isn't legal advice, and {site.organization} should have it
+          This privacy policy describes how this site currently works
+          (sign-in accounts and saved worksheet answers). It isn't legal
+          advice, and {site.organization} should have it
           reviewed by a qualified lawyer — particularly given that this site
           is aimed at students, some of whom may be minors, before
           publishing it live. Edit any section below to match what this
@@ -42,9 +42,9 @@ export default function PrivacyPolicy() {
             <h2 className="font-display text-xl font-semibold text-ink">2. What this site is for</h2>
             <p className="mt-3 leading-relaxed text-slate">
               This site provides career-orientation information and
-              downloadable worksheets for students. It does not require an
-              account, login, or payment, and most pages can be used without
-              submitting any personal information at all.
+              worksheets for students. Using it requires an account created
+              by {site.organization} — there is no public sign-up and no
+              payment.
             </p>
           </Reveal>
 
@@ -55,6 +55,28 @@ export default function PrivacyPolicy() {
               site is configured and hosted, the following may apply:
             </p>
             <div className="mt-4 space-y-4">
+              <div className="rounded-xl bg-card p-5">
+                <h3 className="font-display text-base font-semibold text-ink">Your account</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-slate">
+                  Your email address, your name (if {site.organization} adds
+                  it), your role (student or administrator), when the account
+                  was created and when you last signed in. Your password is
+                  stored only in encrypted (hashed) form — nobody, including
+                  administrators, can read it. To block password guessing,
+                  failed sign-in attempts (the email address entered and the
+                  network address) are kept for up to one day.
+                </p>
+              </div>
+              <div className="rounded-xl bg-card p-5">
+                <h3 className="font-display text-base font-semibold text-ink">Your worksheet answers</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-slate">
+                  What you write or tick on the worksheets is saved to your
+                  account so you can continue later. You and the
+                  administrators of {site.organization} can see your answers
+                  and how much of each worksheet you have completed, so they
+                  can support your career orientation. Nobody else can.
+                </p>
+              </div>
               <div className="rounded-xl bg-card p-5">
                 <h3 className="font-display text-base font-semibold text-ink">Server and hosting logs</h3>
                 <p className="mt-2 text-[15px] leading-relaxed text-slate">
@@ -105,21 +127,21 @@ export default function PrivacyPolicy() {
           <Reveal as="div">
             <h2 className="font-display text-xl font-semibold text-ink">4. Cookies</h2>
             <p className="mt-3 leading-relaxed text-slate">
-              This site does not use its own cookies for tracking or
-              advertising. If a hosting provider, analytics tool, or
-              third-party embed adds cookies in the future, this section
-              should be updated to list them and explain what each one does.
+              When you sign in, this site sets one essential cookie,{" "}
+              <code>aa_session</code>, which keeps you signed in for up to 7
+              days and is removed when you log out. The site uses no cookies
+              for tracking or advertising. If a hosting provider, analytics
+              tool, or third-party embed adds cookies in the future, this
+              section should be updated to list them.
             </p>
           </Reveal>
 
           <Reveal as="div">
-            <h2 className="font-display text-xl font-semibold text-ink">5. Downloadable documents</h2>
+            <h2 className="font-display text-xl font-semibold text-ink">5. Worksheets</h2>
             <p className="mt-3 leading-relaxed text-slate">
-              The worksheets and forms on the Documents page are provided
-              for your own use. Filling them in and printing or saving them
-              happens on your own device — we don't see or collect what you
-              write on them unless you choose to send a copy to us
-              separately.
+              The worksheets open inside this site and can't be downloaded
+              or printed. What you fill in is saved to your account as
+              described in section 3.
             </p>
           </Reveal>
 
@@ -127,10 +149,11 @@ export default function PrivacyPolicy() {
             <h2 className="font-display text-xl font-semibold text-ink">6. Information about minors</h2>
             <p className="mt-3 leading-relaxed text-slate">
               This site is designed for use by students, who may be under
-              18. We don't knowingly collect more personal information from
-              a young visitor than we would from any other visitor, and we
-              don't ask for things like full names, home addresses, or
-              school details anywhere on this site. If you're a parent or
+              18. Accounts hold only an email address and, optionally, a
+              name — never home addresses or school records. Worksheet
+              answers can contain personal reflections; they are visible
+              only to the student and to the administrators of{" "}
+              {site.organization}. If you're a parent or
               guardian and have concerns about a young person's use of this
               site, please contact us at {site.contactEmail}.
             </p>
@@ -139,18 +162,21 @@ export default function PrivacyPolicy() {
           <Reveal as="div">
             <h2 className="font-display text-xl font-semibold text-ink">7. Sharing your information</h2>
             <p className="mt-3 leading-relaxed text-slate">
-              We don't sell or rent visitor information. Limited technical
-              data may pass through our hosting provider, our font provider
-              (Google Fonts), and any analytics tool we choose to use,
-              strictly to operate and maintain the site. We don't share
-              anything with advertisers.
+              We don't sell or rent visitor information. The site is hosted
+              by Vercel, and accounts and worksheet answers are stored in a
+              database run by Neon on servers in Frankfurt, Germany. These
+              providers, our font provider (Google Fonts), and any analytics
+              tool we choose to use process data only to operate the site.
+              We don't share anything with advertisers.
             </p>
           </Reveal>
 
           <Reveal as="div">
             <h2 className="font-display text-xl font-semibold text-ink">8. How long we keep information</h2>
             <p className="mt-3 leading-relaxed text-slate">
-              Server logs are typically retained for a limited period by our
+              Accounts and worksheet answers are kept while the account
+              exists; deleting an account also deletes its answers. Server
+              logs are typically retained for a limited period by our
               hosting provider for security purposes, then deleted or
               anonymized automatically. Emails you send us are kept only as
               long as needed to respond and to keep a reasonable record of
@@ -161,10 +187,9 @@ export default function PrivacyPolicy() {
           <Reveal as="div">
             <h2 className="font-display text-xl font-semibold text-ink">9. Your choices</h2>
             <p className="mt-3 leading-relaxed text-slate">
-              You can browse this site without providing any personal
-              information. If you've emailed us and would like that message
-              or our reply deleted from our records, contact us at{" "}
-              {site.contactEmail} and we'll take care of it.
+              You can ask us at {site.contactEmail} to see, correct or
+              delete your account and your saved answers, or any message
+              you've sent us, and we'll take care of it.
             </p>
           </Reveal>
 

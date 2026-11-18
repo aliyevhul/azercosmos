@@ -42,6 +42,15 @@ const SCHEMA = `
   );
   CREATE INDEX IF NOT EXISTS app_login_failures_email_at ON app_login_failures (email, at);
   CREATE INDEX IF NOT EXISTS app_login_failures_ip_at ON app_login_failures (ip, at);
+  CREATE TABLE IF NOT EXISTS app_worksheet_answers (
+    user_id    BIGINT NOT NULL REFERENCES app_users (id) ON DELETE CASCADE,
+    doc_id     TEXT NOT NULL,
+    answers    JSONB NOT NULL DEFAULT '{}'::jsonb,
+    filled     INTEGER NOT NULL DEFAULT 0,
+    total      INTEGER NOT NULL DEFAULT 0,
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    PRIMARY KEY (user_id, doc_id)
+  );
 `;
 
 // Creates the tables (once per server instance) and, if there is no admin

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { Check, Copy, Download, KeyRound, Search, Trash2, UserPlus, Users, Wand2 } from "lucide-react";
 import { goToLogin, useAuth } from "../auth/AuthContext";
+import AdminTabs from "../components/AdminTabs";
 
 // ─────────────────────────────────────────────────────────────────────────
 // Admin panel: create sign-in accounts for students and staff, reset
@@ -527,6 +528,7 @@ function AdminPanel({ me }) {
 
   return (
     <section className="mx-auto max-w-7xl px-5 py-10 md:px-8 md:py-14">
+      <AdminTabs />
       <h1 className="font-display text-3xl font-bold text-ink md:text-4xl">Accounts</h1>
       <p className="mt-2 max-w-2xl text-slate">
         Everyone needs an account to open this site. Passwords are stored encrypted, so you only see them when you create or

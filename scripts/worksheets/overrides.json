@@ -1,0 +1,418 @@
+{
+ "01-intro-icons-guide": {
+  "1": {
+   "skip": true
+  }
+ },
+ "02-welcome-career-orientation": {
+  "1": {
+   "skip": true
+  },
+  "2": {
+   "skip": true
+  }
+ },
+ "04-potential-analysis-task": {
+  "1": {
+   "skip": true
+  }
+ },
+ "06-planning-my-internship": {
+  "1": {
+   "skip": true
+  },
+  "3": {
+   "skip": true
+  },
+  "4": {
+   "skip": true
+  },
+  "5": {
+   "skip": true
+  },
+  "6": {
+   "remove": [
+    "p6-f3",
+    "p6-f4",
+    "p6-f5",
+    "p6-f6",
+    "p6-f7",
+    "p6-f8"
+   ]
+  }
+ },
+ "07-apprenticeship-application": {
+  "1": {
+   "skip": true
+  }
+ },
+ "08-job-interview-preparation": {
+  "1": {
+   "skip": true
+  },
+  "3": {
+   "add": [
+    {
+     "type": "textarea",
+     "x": 258.3,
+     "y": 165.9,
+     "w": 88.9,
+     "h": 36.4
+    }
+   ]
+  },
+  "4": {
+   "ignoreImages": true
+  }
+ },
+ "11-upper-secondary-overview": {
+  "1": {
+   "skip": true
+  },
+  "2": {
+   "skip": true
+  }
+ },
+ "12-my-potential-at-a-glance": {
+  "1": {
+   "skip": true
+  }
+ },
+ "13-practice-elements-at-a-glance": {
+  "1": {
+   "skip": true
+  }
+ },
+ "14-my-studies-at-a-glance": {
+  "1": {
+   "skip": true
+  }
+ },
+ "03-self-perception-worksheet": {
+  "2": {
+   "remove": [
+    "p2-f1",
+    "p2-f2"
+   ],
+   "add": [
+    {
+     "type": "textarea",
+     "x": 87.7,
+     "y": 247.5,
+     "w": 103.8,
+     "h": 30
+    },
+    {
+     "type": "textarea",
+     "x": 225.7,
+     "y": 265.0,
+     "w": 103.8,
+     "h": 30
+    },
+    {
+     "type": "textarea",
+     "x": 93.4,
+     "y": 302.0,
+     "w": 103.6,
+     "h": 30
+    },
+    {
+     "type": "textarea",
+     "x": 197.3,
+     "y": 332.0,
+     "w": 103.7,
+     "h": 30
+    },
+    {
+     "type": "textarea",
+     "x": 337.6,
+     "y": 298.5,
+     "w": 103.9,
+     "h": 30
+    }
+   ]
+  }
+ },
+ "05-practical-research-worksheet": {
+  "3": {
+   "remove": [
+    "p3-f10"
+   ],
+   "add": [
+    {
+     "type": "checkbox",
+     "x": 71.5,
+     "y": 629.5,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "type": "checkbox",
+     "x": 167.5,
+     "y": 629.5,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "type": "checkbox",
+     "x": 261.5,
+     "y": 629.5,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "type": "checkbox",
+     "x": 71.5,
+     "y": 681.5,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "type": "checkbox",
+     "x": 167.5,
+     "y": 681.5,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "type": "checkbox",
+     "x": 261.5,
+     "y": 681.5,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "type": "checkbox",
+     "x": 71.5,
+     "y": 733.5,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "type": "checkbox",
+     "x": 167.5,
+     "y": 733.5,
+     "w": 24,
+     "h": 24
+    },
+    {
+     "type": "checkbox",
+     "x": 261.5,
+     "y": 733.5,
+     "w": 24,
+     "h": 24
+    }
+   ]
+  }
+ },
+ "09-documents-checklist": {
+  "1": {
+   "add": [
+    {
+     "type": "checkbox",
+     "x": 91,
+     "y": 502.7,
+     "w": 13.5,
+     "h": 13.5
+    },
+    {
+     "type": "checkbox",
+     "x": 91,
+     "y": 569.7,
+     "w": 13.5,
+     "h": 13.5
+    },
+    {
+     "type": "checkbox",
+     "x": 91,
+     "y": 595.5,
+     "w": 13.5,
+     "h": 13.5
+    },
+    {
+     "type": "checkbox",
+     "x": 91,
+     "y": 711.5,
+     "w": 13.5,
+     "h": 13.5
+    },
+    {
+     "type": "checkbox",
+     "x": 91,
+     "y": 736.0,
+     "w": 13.5,
+     "h": 13.5
+    },
+    {
+     "type": "text",
+     "x": 116.5,
+     "y": 757.8,
+     "w": 425.5,
+     "h": 15
+    }
+   ]
+  }
+ },
+ "10-further-evidence-log": {
+  "1": {
+   "remove": [
+    "p1-f3",
+    "p1-f4",
+    "p1-f5",
+    "p1-f6",
+    "p1-f7",
+    "p1-f8",
+    "p1-f9"
+   ],
+   "add": [
+    {
+     "type": "text",
+     "x": 82,
+     "y": 542.5,
+     "w": 202,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 288,
+     "y": 542.5,
+     "w": 84,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 374,
+     "y": 542.5,
+     "w": 125,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 82,
+     "y": 575.8,
+     "w": 202,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 288,
+     "y": 575.8,
+     "w": 84,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 374,
+     "y": 575.8,
+     "w": 125,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 82,
+     "y": 608.8,
+     "w": 202,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 288,
+     "y": 608.8,
+     "w": 84,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 374,
+     "y": 608.8,
+     "w": 125,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 82,
+     "y": 641.7,
+     "w": 202,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 288,
+     "y": 641.7,
+     "w": 84,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 374,
+     "y": 641.7,
+     "w": 125,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 82,
+     "y": 675.0,
+     "w": 202,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 288,
+     "y": 675.0,
+     "w": 84,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 374,
+     "y": 675.0,
+     "w": 125,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 82,
+     "y": 708.0,
+     "w": 202,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 288,
+     "y": 708.0,
+     "w": 84,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 374,
+     "y": 708.0,
+     "w": 125,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 82,
+     "y": 741.0,
+     "w": 202,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 288,
+     "y": 741.0,
+     "w": 84,
+     "h": 15
+    },
+    {
+     "type": "text",
+     "x": 374,
+     "y": 741.0,
+     "w": 125,
+     "h": 15
+    }
+   ]
+  }
+ }
+}

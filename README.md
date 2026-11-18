@@ -63,14 +63,17 @@ api/auth/login.js    POST  sign in, sets the session cookie
 api/auth/logout.js   POST  sign out
 api/auth/me.js       GET   who am I (checks the account is still active)
 api/admin/users.js   GET/POST/PATCH/DELETE  account management (admins only)
+api/worksheets.js    GET/PUT  load and save worksheet answers, progress
+api/admin/progress.js GET   every student's progress (admins only)
 server/              shared code: database, sessions, password hashing
 public/login.html    the sign-in page
 src/pages/Admin.jsx  the admin panel
 src/auth/            checks the session in the browser, Log out
 ```
 
-The database tables (`app_users`, `app_login_failures`) are created
-automatically the first time the API runs.
+The database tables (`app_users`, `app_login_failures`,
+`app_worksheet_answers`) are created automatically the first time the API
+runs. Deleting an account also deletes that student's answers.
 
 ### Setting it up on Vercel (once)
 
@@ -111,6 +114,46 @@ npm run serve:local
 Then open http://localhost:3000. `scripts/local-server.mjs` serves the
 built site the way Vercel does (middleware, API functions, clean URLs).
 
+## Worksheets (fill in online)
+
+The worksheets open inside the site at `/worksheets/<id>` instead of being
+downloaded. Each page is shown as an image with typing boxes and tick boxes
+placed over its blanks; answers save to the student's account as they type.
+There is no download or print button, and the PDFs themselves aren't
+published (they live in `worksheets/source/`, outside `public/`).
+
+- **Students** see "x/y filled" on every worksheet and their overall
+  progress on the Documents page.
+- **Admins** get a **Progress** tab next to Accounts (`/admin/progress`):
+  every student × every worksheet as a percentage, downloadable as CSV.
+  Clicking a percentage opens that student's worksheet read-only.
+- Documents with nothing to fill in (overviews, "at a glance" pages) open
+  read-only.
+
+Blocking downloads is a deterrent, not a lock: anyone who can view a page
+can still take a screenshot of it.
+
+**Adding or changing a worksheet**
+
+```bash
+pip install pymupdf opencv-python-headless numpy
+# put the PDF in worksheets/source/  (file name without .pdf = its id)
+python3 scripts/worksheets/build.py --preview
+```
+
+`build.py` renders each page to `public/worksheet-pages/<id>/<n>.webp`,
+finds the blanks (writing lines, empty boxes and table cells, small
+squares, speech bubbles) and writes `shared/worksheet-fields.js`.
+`--preview` writes overlay images to `.worksheet-preview/` so you can check
+every field (orange = line, green = box, purple = tick box). Fix anything
+it gets wrong in `scripts/worksheets/overrides.json` — skip a page, remove
+a field by id, or add one in PDF points. Then add the document to
+`src/data/documents.js`.
+
+Answers are stored per field id. Once students have started a worksheet,
+check `git diff shared/worksheet-fields.js` after a rebuild: if a field's
+id changes, answers saved under the old id are no longer shown.
+
 ## Making it yours
 
 **`src/config/site.js`**
@@ -133,11 +176,10 @@ built site the way Vercel does (middleware, API functions, clean URLs).
 
 **Privacy Policy**
 A full Privacy Policy page lives at `src/pages/PrivacyPolicy.jsx`
-(route: `/privacy-policy`, linked from the footer). It's a general-purpose
-template written for a static, student-facing site — review it with a
-qualified lawyer before publishing, especially given the site's student
-audience, and update the sections on analytics/cookies once you know
-exactly what tools (if any) will run on the deployed site.
+(route: `/privacy-policy`, linked from the footer). It describes the
+accounts, saved worksheet answers, the sign-in cookie and where data is
+stored — review it with a qualified lawyer before students use the site,
+especially given that some may be minors.
 
 **Your photos**
 Each page's hero photo is a config slot, just like the logo and PDFs.
@@ -160,8 +202,7 @@ value in `index.css` and it updates everywhere that stage is used (nav
 button, page hero, cards, links).
 
 **Your PDFs**
-Drop files into `public/documents/` and list them in
-`src/data/documents.js`.
+See [Worksheets](#worksheets-fill-in-online) above.
 
 **Page copy and cards**
 Each stage page in `src/pages/` builds its topic cards (`TopicCard` +
@@ -174,19 +215,24 @@ icons (from `lucide-react`), and paragraph text there.
 src/
   components/   Navbar, Footer, Hero, PageHero, PartnerBand,
                 SupportersGrid, CategoryRow, TopicCard, StageNav,
-                Checklist, Callout, Layout, AccountBar
-  pages/        Home + the six stage pages, Admin
+                Checklist, Callout, Layout, AccountBar, AdminTabs,
+                DocumentCard
+  pages/        Home + the six stage pages, Worksheet, Admin, AdminProgress
   auth/         session check in the browser
+  worksheets/   worksheet API calls and progress helpers
   config/       site.js (content/branding) + colors.js (stage color map)
-  data/         documents.js — the downloadable file list
+  data/         documents.js — the document list
 public/
   login.html    the sign-in page
   logo/         your logo + partner/supporter logo files
-  documents/    your PDF files
+  worksheet-pages/  page images of each worksheet (generated)
+worksheets/source/  the original PDFs (not published)
+shared/         worksheet-fields.js — field positions (generated)
 api/            backend endpoints (Vercel Functions)
 server/         backend shared code (database, sessions, passwords)
 middleware.js   sign-in check in front of every page and file
 scripts/        local-server.mjs — run the full site with login locally
+                worksheets/build.py — turn PDFs into pages + fields
 ```
 
 ## Tech stack

@@ -9,6 +9,8 @@ import Documents from "./pages/Documents";
 import Conclusion from "./pages/Conclusion";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Admin from "./pages/Admin";
+import AdminProgress from "./pages/AdminProgress";
+import Worksheet from "./pages/Worksheet";
 
 export default function App() {
   return (
@@ -23,6 +25,8 @@ export default function App() {
         <Route path="/conclusion" element={<Conclusion />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/progress" element={<AdminProgress />} />
+        <Route path="/worksheets/:docId" element={<Worksheet />} />
       </Route>
     </Routes>
   );

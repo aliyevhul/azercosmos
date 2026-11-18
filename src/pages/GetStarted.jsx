@@ -20,7 +20,8 @@ export default function GetStarted() {
           <Reveal as="p" className="text-lg leading-relaxed text-slate">
             This site walks alongside the paper or digital tracker you
             already have. Use it to understand how each stage works, see
-            examples, and download anything you need along the way.
+            examples, and fill in the worksheets right here along the way —
+            your answers are saved to your account.
           </Reveal>
         </div>
       </section>
