@@ -6,7 +6,7 @@
 // Left public: the login page, the API (which checks sessions itself), the
 // favicon and /logo/ (needed by the login page).
 
-import { next } from "@vercel/functions";
+import { next, rewrite } from "@vercel/functions";
 import { ConfigError, getSessionToken, verifySession } from "./server/session.js";
 
 export const config = {
@@ -41,6 +41,15 @@ export default async function middleware(request) {
 
   if ((url.pathname === "/admin" || url.pathname.startsWith("/admin/")) && session.role !== "admin") {
     return redirect("/");
+  }
+
+  // Page routes of the single-page app (/potential, /worksheets/…) have no
+  // file behind them: serve index.html and let React Router take over.
+  // Done here because vercel.json rewrites aren't applied once middleware
+  // hands a request on.
+  const lastSegment = url.pathname.split("/").pop();
+  if (url.pathname !== "/" && !lastSegment.includes(".")) {
+    return rewrite(new URL("/", url));
   }
 
   return next();

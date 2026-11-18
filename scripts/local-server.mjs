@@ -44,7 +44,9 @@ async function fileIfExists(path) {
   }
 }
 
-// Static files with Vercel's cleanUrls + rewrite-to-index.html behaviour.
+// Static files with Vercel's cleanUrls behaviour. Like Vercel, there is no
+// catch-all fallback here: single-page-app routes reach index.html only
+// through the middleware's rewrite.
 async function serveStatic(pathname) {
   const safe = normalize(decodeURIComponent(pathname)).replace(/^(\.\.[/\\])+/, "");
   const base = join(DIST, safe);
@@ -52,8 +54,8 @@ async function serveStatic(pathname) {
   const file =
     (await fileIfExists(base)) ||
     (await fileIfExists(`${base}.html`)) ||
-    (await fileIfExists(join(base, "index.html"))) ||
-    join(DIST, "index.html");
+    (await fileIfExists(join(base, "index.html")));
+  if (!file) return new Response("Not found", { status: 404, headers: { "Content-Type": "text/plain" } });
   const body = await readFile(file);
   return new Response(body, { headers: { "Content-Type": TYPES[extname(file)] || "application/octet-stream" } });
 }
@@ -72,6 +74,8 @@ async function route(request) {
   if (pathname.startsWith("/api/")) return callApi(request, pathname);
   if (matchers.some((re) => re.test(pathname))) {
     const res = await middlewareModule.default(request);
+    const rewriteTo = res?.headers.get("x-middleware-rewrite");
+    if (rewriteTo) return serveStatic(new URL(rewriteTo, request.url).pathname);
     if (res && !res.headers.get("x-middleware-next")) return res;
   }
   return serveStatic(pathname);
