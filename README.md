@@ -19,14 +19,97 @@ npm install
 npm run dev
 ```
 
+`npm run dev` skips the login (you're treated as a pretend admin) so you
+can work on the pages without a database. To run the real thing with the
+login wall and admin panel, see [Testing the login locally](#testing-the-login-locally).
+
 ## Build for production
 
 ```bash
 npm run build
 ```
 
-Outputs a static site into `dist/` — deploy it to Vercel, Netlify, GitHub
-Pages, Cloudflare Pages, or any static host.
+The site is hosted on Vercel. Besides the static pages in `dist/`, it now
+has a small backend (Vercel Functions in `api/` plus `middleware.js`) and a
+Postgres database for accounts, so it needs Vercel (or a host with the same
+features) rather than a plain static host.
+
+## Login and admin panel
+
+Every page, image bundle and PDF is behind a sign-in. Accounts are created
+by the Space Academy in the admin panel; there is no public sign-up.
+
+- **`/login`** — sign-in page (`public/login.html`, standalone so nothing of
+  the site loads before sign-in).
+- **`/admin`** — admins only. Add one account, paste a whole list of
+  students (`email, name, password` per line — passwords are generated
+  when left out, and the result can be downloaded as a CSV), reset
+  passwords, change roles, disable or delete accounts.
+- **Roles** — `student` can view the site; `admin` can also manage accounts.
+- Disabling an account, resetting its password or changing its role signs
+  that person out immediately.
+- Passwords are stored as scrypt hashes, so nobody (admins included) can
+  read them later. Sessions are a signed, HttpOnly cookie valid for 7 days
+  and renewed while the person keeps using the site.
+- After 8 wrong passwords for an email (or 30 from one network) sign-in is
+  paused for 15 minutes.
+
+### How it fits together
+
+```
+middleware.js        runs before every page/file: no valid session → /login,
+                     non-admins → away from /admin
+api/auth/login.js    POST  sign in, sets the session cookie
+api/auth/logout.js   POST  sign out
+api/auth/me.js       GET   who am I (checks the account is still active)
+api/admin/users.js   GET/POST/PATCH/DELETE  account management (admins only)
+server/              shared code: database, sessions, password hashing
+public/login.html    the sign-in page
+src/pages/Admin.jsx  the admin panel
+src/auth/            checks the session in the browser, Log out
+```
+
+The database tables (`app_users`, `app_login_failures`) are created
+automatically the first time the API runs.
+
+### Setting it up on Vercel (once)
+
+1. **Database.** In the Vercel project, open **Storage → Create Database →
+   Neon (Postgres)**, choose the **Frankfurt (eu-central-1)** region, and
+   connect it to this project for all environments. This adds
+   `DATABASE_URL` automatically. (The API runs in Frankfurt too — see
+   `regions` in `vercel.json`.)
+2. **First admin.** In **Settings → Environment Variables**, add:
+
+   | Name | Value |
+   | --- | --- |
+   | `ADMIN_EMAIL` | the email the first admin will sign in with |
+   | `ADMIN_PASSWORD` | their password (at least 8 characters) |
+   | `AUTH_SECRET` | optional — a random string of 32+ characters used to sign sessions. If left out, a key is derived from `DATABASE_URL`. |
+
+   The first admin is created the first time someone opens the site after
+   deploying, and only while there is no admin yet. After signing in,
+   change that password from the admin panel, and you can then delete
+   `ADMIN_PASSWORD` from Vercel.
+3. **Redeploy** (Deployments → ⋯ → Redeploy) so the new variables are used.
+
+Until `DATABASE_URL` is set the site stays locked and the sign-in page
+answers "The login system isn't set up yet", so set up the database before
+this goes to production.
+
+### Testing the login locally
+
+You need a Postgres database (a local one, or a free Neon branch):
+
+```bash
+npm run build
+DATABASE_URL=postgres://user:pass@localhost:5432/dbname \
+ADMIN_EMAIL=admin@example.com ADMIN_PASSWORD=change-me-123 \
+npm run serve:local
+```
+
+Then open http://localhost:3000. `scripts/local-server.mjs` serves the
+built site the way Vercel does (middleware, API functions, clean URLs).
 
 ## Making it yours
 
@@ -91,17 +174,24 @@ icons (from `lucide-react`), and paragraph text there.
 src/
   components/   Navbar, Footer, Hero, PageHero, PartnerBand,
                 SupportersGrid, CategoryRow, TopicCard, StageNav,
-                Checklist, Callout, Layout
-  pages/        Home + the six stage pages
+                Checklist, Callout, Layout, AccountBar
+  pages/        Home + the six stage pages, Admin
+  auth/         session check in the browser
   config/       site.js (content/branding) + colors.js (stage color map)
   data/         documents.js — the downloadable file list
 public/
+  login.html    the sign-in page
   logo/         your logo + partner/supporter logo files
   documents/    your PDF files
+api/            backend endpoints (Vercel Functions)
+server/         backend shared code (database, sessions, passwords)
+middleware.js   sign-in check in front of every page and file
+scripts/        local-server.mjs — run the full site with login locally
 ```
 
 ## Tech stack
 
 React 19, React Router 7, Vite, Tailwind CSS v4 (CSS-based config — see
-`src/index.css`), lucide-react for icons.
+`src/index.css`), lucide-react for icons. Backend: Vercel Functions and
+Routing Middleware, Postgres via `pg`, sessions via `jose`.
 

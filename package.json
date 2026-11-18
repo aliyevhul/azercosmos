@@ -7,10 +7,14 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "serve:local": "node scripts/local-server.mjs"
   },
   "dependencies": {
+    "@vercel/functions": "^3.11.3",
+    "jose": "^6.2.17",
     "lucide-react": "^1.22.0",
+    "pg": "^8.23.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.1"
