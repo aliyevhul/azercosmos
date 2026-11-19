@@ -23,3 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 .worksheet-preview/
+
+# Secrets: never commit real keys
+.env
+.env.*
+!.env.example

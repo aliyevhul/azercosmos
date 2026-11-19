@@ -51,6 +51,22 @@ const SCHEMA = `
     updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
     PRIMARY KEY (user_id, doc_id)
   );
+  CREATE TABLE IF NOT EXISTS app_ai_summaries (
+    user_id    BIGINT NOT NULL REFERENCES app_users (id) ON DELETE CASCADE,
+    scope      TEXT NOT NULL,
+    input_hash TEXT NOT NULL,
+    summary    JSONB NOT NULL,
+    model      TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+    PRIMARY KEY (user_id, scope)
+  );
+  CREATE TABLE IF NOT EXISTS app_ai_usage (
+    id           BIGSERIAL PRIMARY KEY,
+    requester_id BIGINT NOT NULL REFERENCES app_users (id) ON DELETE CASCADE,
+    at           TIMESTAMPTZ NOT NULL DEFAULT now()
+  );
+  CREATE INDEX IF NOT EXISTS app_ai_usage_requester_at ON app_ai_usage (requester_id, at);
+  CREATE INDEX IF NOT EXISTS app_ai_usage_at ON app_ai_usage (at);
 `;
 
 // Creates the tables (once per server instance) and, if there is no admin

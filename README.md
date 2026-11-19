@@ -65,6 +65,7 @@ api/auth/me.js       GET   who am I (checks the account is still active)
 api/admin/users.js   GET/POST/PATCH/DELETE  account management (admins only)
 api/worksheets.js    GET/PUT  load and save worksheet answers, progress
 api/admin/progress.js GET   every student's progress (admins only)
+api/summary.js       GET/POST  AI summary of a student's answers (Groq)
 server/              shared code: database, sessions, password hashing
 public/login.html    the sign-in page
 src/pages/Admin.jsx  the admin panel
@@ -89,6 +90,7 @@ runs. Deleting an account also deletes that student's answers.
    | `ADMIN_EMAIL` | the email the first admin will sign in with |
    | `ADMIN_PASSWORD` | their password (at least 8 characters) |
    | `AUTH_SECRET` | optional — a random string of 32+ characters used to sign sessions. If left out, a key is derived from `DATABASE_URL`. |
+   | `GROQ_API_KEY` | key for the AI summary (see below). Without it the site works and the summary says it isn't set up. |
 
    The first admin is created the first time someone opens the site after
    deploying, and only while there is no admin yet. After signing in,
@@ -153,6 +155,63 @@ a field by id, or add one in PDF points. Then add the document to
 Answers are stored per field id. Once students have started a worksheet,
 check `git diff shared/worksheet-fields.js` after a rebuild: if a field's
 id changes, answers saved under the old id are no longer shown.
+
+## AI summary (Groq)
+
+Students can get a short AI summary of what their answers show: one
+worksheet (at the bottom of the worksheet page) or all of them (Documents
+page). Admins can open any student's summary from the **Progress** tab
+("AI summary" under the name) or on a student's worksheet.
+
+The summary has an overview, key points, strengths, next steps and what is
+still open. It is written only from the saved answers; the model is told
+to state nothing the answers don't support and to treat answers as data
+(not instructions).
+
+- **Where it runs** — only on the server (`server/groq.js`,
+  `server/summary.js`, `api/summary.js`). The key is read from
+  `GROQ_API_KEY` and never reaches the browser.
+- **Model** — `openai/gpt-oss-120b` with low reasoning effort, JSON output,
+  at most 1200 output tokens and ~14k characters of input. If it stays
+  rate-limited or unavailable, `openai/gpt-oss-20b` is tried once.
+  Override with `GROQ_MODEL` / `GROQ_FALLBACK_MODEL` (empty = no fallback).
+- **What is sent** — the worksheet answers with the printed prompt next to
+  each blank. Not the student's name or email.
+- **No repeated calls** — the summary is stored with a hash of its input
+  (`app_ai_summaries`). Opening a page only reads it; pressing the button
+  calls the AI only when the answers changed since. Identical requests at
+  the same time share one call; the button is disabled while it runs.
+- **Limits** — 20 new summaries per account per hour and 300 for the whole
+  site (`app_ai_usage`), on top of Groq's own limits.
+- **Failures** — 25 s timeout per attempt, up to 3 attempts per model with
+  exponential backoff (honouring `Retry-After`) on 429, 5xx, timeouts and
+  unusable answers. The page shows a clear message with **Try again**.
+
+**Prompts next to the blanks.** `server/worksheet-context.js` holds the
+printed text beside each field, taken from the PDFs. After adding or
+changing a worksheet, run it after `build.py`:
+
+```bash
+python3 scripts/worksheets/context.py
+```
+
+## Tests
+
+```bash
+npm test                                            # unit tests
+TEST_DATABASE_URL=postgres://… npm test             # + API tests on a throwaway database
+```
+
+The API tests empty the tables of the database they get, so never point
+`TEST_DATABASE_URL` at real data. Groq is replaced with scripted responses,
+so tests make no network calls. To run everything in Docker without
+installing anything locally:
+
+```bash
+docker network create azc-net
+docker run -d --name azc-db --network azc-net -e POSTGRES_PASSWORD=devpass -e POSTGRES_DB=azc postgres:16-alpine
+docker run --rm --network azc-net -v "$PWD":/app -v azc-node-modules:/app/node_modules -w /app   -e TEST_DATABASE_URL=postgres://postgres:devpass@azc-db:5432/azc node:22-alpine sh -c "npm ci && npm test"
+```
 
 ## Making it yours
 
@@ -233,11 +292,14 @@ server/         backend shared code (database, sessions, passwords)
 middleware.js   sign-in check in front of every page and file
 scripts/        local-server.mjs — run the full site with login locally
                 worksheets/build.py — turn PDFs into pages + fields
+                worksheets/context.py — printed prompts next to each field
+tests/          node:test unit and API tests
 ```
 
 ## Tech stack
 
 React 19, React Router 7, Vite, Tailwind CSS v4 (CSS-based config — see
 `src/index.css`), lucide-react for icons. Backend: Vercel Functions and
-Routing Middleware, Postgres via `pg`, sessions via `jose`.
+Routing Middleware, Postgres via `pg`, sessions via `jose`, AI summary via
+Groq's REST API (no SDK).
 

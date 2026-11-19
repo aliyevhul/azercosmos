@@ -143,6 +143,14 @@ export default function PrivacyPolicy() {
               or printed. What you fill in is saved to your account as
               described in section 3.
             </p>
+            <p className="mt-3 leading-relaxed text-slate">
+              You (or an administrator) can ask for an AI summary of your
+              answers. Only when that button is pressed, the answers — without
+              your name or email address — are sent to Groq, Inc., which runs
+              the AI model and returns the summary. The summary is saved with
+              your account so it doesn't have to be created again, and it is
+              deleted together with the account.
+            </p>
           </Reveal>
 
           <Reveal as="div">
@@ -164,7 +172,8 @@ export default function PrivacyPolicy() {
             <p className="mt-3 leading-relaxed text-slate">
               We don't sell or rent visitor information. The site is hosted
               by Vercel, and accounts and worksheet answers are stored in a
-              database run by Neon on servers in Frankfurt, Germany. These
+              database run by Neon on servers in Frankfurt, Germany. AI
+              summaries are created by Groq, Inc. (see section 5). These
               providers, our font provider (Google Fonts), and any analytics
               tool we choose to use process data only to operate the site.
               We don't share anything with advertisers.

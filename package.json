@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "serve:local": "node scripts/local-server.mjs"
+    "serve:local": "node scripts/local-server.mjs",
+    "test": "node --test \"tests/*.test.js\""
   },
   "dependencies": {
     "@vercel/functions": "^3.11.3",

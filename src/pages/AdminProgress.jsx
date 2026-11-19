@@ -1,8 +1,9 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
-import { Download, Search } from "lucide-react";
+import { Download, Search, Sparkles, X } from "lucide-react";
 import { useAuth } from "../auth/AuthContext";
 import AdminTabs from "../components/AdminTabs";
+import AiSummary from "../components/AiSummary";
 import { documentById } from "../data/documents";
 import { NoBackend, fetchAllProgress, percent } from "../worksheets/api";
 
@@ -82,6 +83,12 @@ export default function AdminProgress() {
   const [data, setData] = useState(null);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
+  const [summaryFor, setSummaryFor] = useState(null); // student whose AI summary is open
+  const summaryRef = useRef(null);
+
+  useEffect(() => {
+    if (summaryFor) summaryRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }, [summaryFor]);
 
   useEffect(() => {
     fetchAllProgress()
@@ -143,6 +150,25 @@ export default function AdminProgress() {
         )}
       </div>
 
+      {summaryFor && (
+        <div ref={summaryRef} className="relative mt-4 scroll-mt-4">
+          <AiSummary
+            key={summaryFor.id}
+            className="pr-12"
+            userId={summaryFor.id}
+            title={`AI summary — ${summaryFor.name || summaryFor.email}`}
+          />
+          <button
+            type="button"
+            onClick={() => setSummaryFor(null)}
+            className="absolute top-2 right-2 rounded-md p-1.5 text-slate hover:bg-card-icon hover:text-ink"
+            aria-label="Close summary"
+          >
+            <X size={16} />
+          </button>
+        </div>
+      )}
+
       <div className="mt-4">
         {error && <p className="rounded-md bg-[#fdecec] px-3 py-2.5 text-sm text-[#9b1c1d]">{error}</p>}
         {!data && !error && <p className="text-sm text-slate">Loading progress…</p>}
@@ -173,6 +199,15 @@ export default function AdminProgress() {
                       <div className="font-medium text-ink">{s.name || s.email}</div>
                       {s.name && <div className="text-xs text-slate">{s.email}</div>}
                       {!s.active && <div className="text-xs text-[#9b1c1d]">Disabled</div>}
+                      {sum.filled > 0 && (
+                        <button
+                          type="button"
+                          onClick={() => setSummaryFor(s)}
+                          className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-stage-2 hover:underline"
+                        >
+                          <Sparkles size={12} aria-hidden="true" /> AI summary
+                        </button>
+                      )}
                     </td>
                     <td className="px-3 py-3">
                       <span className="flex items-center gap-2">

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
 import { ArrowLeft, Check, CloudOff, Eye, Loader2, Minus, Plus } from "lucide-react";
+import AiSummary from "../components/AiSummary";
 import { documentById } from "../data/documents";
 import { NoBackend, countFilled, fetchAnswers, isFillable, percent, saveAnswers, worksheets } from "../worksheets/api";
 
@@ -98,6 +99,7 @@ export default function Worksheet() {
   const [error, setError] = useState("");
   const [student, setStudent] = useState(null);
   const [zoom, setZoom] = useState(1);
+  const [edits, setEdits] = useState(0);
 
   const answersRef = useRef({});
   const dirty = useRef(false);
@@ -115,6 +117,7 @@ export default function Worksheet() {
     answersRef.current = {};
     setAnswers({});
     setStudent(null);
+    setEdits(0);
     if (!fillable) {
       setStatus("read");
       return;
@@ -177,6 +180,7 @@ export default function Worksheet() {
       answersRef.current = next;
       setAnswers(next);
       if (!canSave.current) return;
+      setEdits((n) => n + 1);
       dirty.current = true;
       setStatus("pending");
       clearTimeout(timer.current);
@@ -313,6 +317,15 @@ export default function Worksheet() {
               ))}
             </div>
           ))}
+          {["ready", "pending", "saving", "saved", "error", "readonly"].includes(status) && (
+            <AiSummary
+              docId={docId}
+              userId={student ? studentId : undefined}
+              edits={edits}
+              busy={["pending", "saving", "error"].includes(status)}
+              surface="bg-paper shadow-sm ring-1 ring-black/5"
+            />
+          )}
         </div>
       </div>
     </div>

@@ -20,7 +20,12 @@ async function request(path, options = {}) {
     goToLogin();
     throw new Error("Your session has ended. Please sign in again.");
   }
-  if (!res.ok) throw new Error(data.error || `Request failed (${res.status}).`);
+  if (!res.ok) {
+    const err = new Error(data.error || `Request failed (${res.status}).`);
+    err.status = res.status;
+    err.code = data.code;
+    throw err;
+  }
   return data;
 }
 
@@ -43,6 +48,23 @@ export const saveAnswers = (docId, answers, { keepalive = false } = {}) =>
   });
 
 export const fetchAllProgress = () => request("/api/admin/progress");
+
+// AI summary of the answers: one worksheet (docId) or all of them (no docId).
+// GET only reads the stored summary; POST creates or refreshes it.
+export const fetchSummary = (docId, userId) => {
+  const params = new URLSearchParams();
+  if (docId) params.set("doc", docId);
+  if (userId) params.set("user", userId);
+  const q = params.toString();
+  return request(`/api/summary${q ? `?${q}` : ""}`);
+};
+
+export const createSummary = (docId, userId) =>
+  request("/api/summary", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...(docId ? { doc: docId } : {}), ...(userId ? { user: Number(userId) } : {}) }),
+  });
 
 // ── Progress helpers ─────────────────────────────────────────────────────
 export const countFilled = (answers) =>

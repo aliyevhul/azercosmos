@@ -14,6 +14,20 @@ import { MAX_PASSWORD_LENGTH, MIN_PASSWORD_LENGTH, hashPassword } from "../../se
 
 const ROLES = new Set(["student", "admin"]);
 const MAX_BATCH = 500;
+const HASH_CONCURRENCY = 4; // Node's default thread pool size
+
+async function mapLimit(items, limit, fn) {
+  const out = new Array(items.length);
+  let next = 0;
+  const worker = async () => {
+    while (next < items.length) {
+      const i = next++;
+      out[i] = await fn(items[i]);
+    }
+  };
+  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
+  return out;
+}
 
 export const config = { maxDuration: 120 };
 
@@ -43,10 +57,10 @@ export const POST = handle(async (request) => {
   if (input.length === 0) throw new HttpError(400, "No accounts to add.");
   if (input.length > MAX_BATCH) throw new HttpError(400, `Add at most ${MAX_BATCH} accounts at a time.`);
 
-  const db = await getDb();
   const created = [];
   const skipped = [];
   const seen = new Set();
+  const valid = [];
 
   for (const [index, raw] of input.entries()) {
     const email = normalizeEmail(raw?.email);
@@ -64,17 +78,35 @@ export const POST = handle(async (request) => {
       continue;
     }
     seen.add(email);
+    valid.push({ index, email, password, role, name });
+  }
 
+  const db = await getDb();
+  // Skip existing emails before hashing (hashing is the slow part), then
+  // hash a few passwords at a time instead of one after another.
+  const { rows: existing } = valid.length
+    ? await db.query("SELECT email FROM app_users WHERE email = ANY($1::text[])", [valid.map((v) => v.email)])
+    : { rows: [] };
+  const taken = new Set(existing.map((r) => r.email));
+  const todo = [];
+  for (const v of valid) {
+    if (taken.has(v.email)) skipped.push({ index: v.index, email: v.email, reason: "An account with this email already exists." });
+    else todo.push(v);
+  }
+  const hashes = await mapLimit(todo, HASH_CONCURRENCY, (v) => hashPassword(v.password));
+
+  for (const [i, v] of todo.entries()) {
     const { rows } = await db.query(
       `INSERT INTO app_users (email, name, password_hash, role)
        VALUES ($1, $2, $3, $4)
        ON CONFLICT (email) DO NOTHING
        RETURNING *`,
-      [email, name, await hashPassword(password), role],
+      [v.email, v.name, hashes[i], v.role],
     );
-    if (rows.length === 0) skipped.push({ index, email, reason: "An account with this email already exists." });
+    if (rows.length === 0) skipped.push({ index: v.index, email: v.email, reason: "An account with this email already exists." });
     else created.push(publicUser(rows[0]));
   }
+  skipped.sort((a, b) => a.index - b.index);
 
   return json({ created, skipped }, created.length ? 201 : 200);
 });

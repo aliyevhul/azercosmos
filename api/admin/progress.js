@@ -11,19 +11,21 @@ import { totalFor, worksheetIds } from "../../server/worksheets.js";
 export const GET = handle(async (request) => {
   await requireAdmin(request);
   const db = await getDb();
-  const { rows: users } = await db.query(
-    "SELECT * FROM app_users WHERE role = 'student' ORDER BY (name = ''), lower(name), email",
-  );
-  const { rows: answers } = await db.query(
-    `SELECT a.user_id, a.doc_id, a.filled, a.updated_at
-       FROM app_worksheet_answers a JOIN app_users u ON u.id = a.user_id
-      WHERE u.role = 'student'`,
-  );
+  // independent queries: run them side by side
+  const [{ rows: users }, { rows: answers }] = await Promise.all([
+    db.query("SELECT * FROM app_users WHERE role = 'student' ORDER BY (name = ''), lower(name), email"),
+    db.query(
+      `SELECT a.user_id, a.doc_id, a.filled, a.updated_at
+         FROM app_worksheet_answers a JOIN app_users u ON u.id = a.user_id
+        WHERE u.role = 'student'`,
+    ),
+  ]);
 
   const ids = worksheetIds();
+  const known = new Set(ids);
   const byUser = new Map();
   for (const a of answers) {
-    if (!ids.includes(a.doc_id)) continue;
+    if (!known.has(a.doc_id)) continue;
     const key = Number(a.user_id);
     if (!byUser.has(key)) byUser.set(key, {});
     byUser.get(key)[a.doc_id] = { filled: a.filled, total: totalFor(a.doc_id), updatedAt: a.updated_at };

@@ -3,6 +3,7 @@ import StageNav from "../components/StageNav";
 import Reveal from "../components/Reveal";
 import PageDownloads from "../components/PageDownloads";
 import DocumentCard from "../components/DocumentCard";
+import AiSummary from "../components/AiSummary";
 import { nav, site } from "../config/site";
 import { documents, documentsByPage } from "../data/documents";
 import useProgress from "../worksheets/useProgress";
@@ -54,6 +55,7 @@ export default function Documents() {
             account, so you can stop and continue any time. They're also on each individual stage page.
           </Reveal>
           <OverallProgress progress={progress} />
+          {progress && <AiSummary color="stage-5" className="mt-4" />}
         </div>
       </section>
 
