@@ -67,6 +67,13 @@ const SCHEMA = `
   );
   CREATE INDEX IF NOT EXISTS app_ai_usage_requester_at ON app_ai_usage (requester_id, at);
   CREATE INDEX IF NOT EXISTS app_ai_usage_at ON app_ai_usage (at);
+  CREATE TABLE IF NOT EXISTS app_ai_chat_usage (
+    id           BIGSERIAL PRIMARY KEY,
+    requester_id BIGINT NOT NULL REFERENCES app_users (id) ON DELETE CASCADE,
+    at           TIMESTAMPTZ NOT NULL DEFAULT now()
+  );
+  CREATE INDEX IF NOT EXISTS app_ai_chat_usage_requester_at ON app_ai_chat_usage (requester_id, at);
+  CREATE INDEX IF NOT EXISTS app_ai_chat_usage_at ON app_ai_chat_usage (at);
 `;
 
 // Creates the tables (once per server instance) and, if there is no admin

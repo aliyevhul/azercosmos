@@ -66,6 +66,7 @@ api/admin/users.js   GET/POST/PATCH/DELETE  account management (admins only)
 api/worksheets.js    GET/PUT  load and save worksheet answers, progress
 api/admin/progress.js GET   every student's progress (admins only)
 api/summary.js       GET/POST  AI summary of a student's answers (Groq)
+api/chat.js          GET/POST  career helper chat (Groq)
 server/              shared code: database, sessions, password hashing
 public/login.html    the sign-in page
 src/pages/Admin.jsx  the admin panel
@@ -90,7 +91,7 @@ runs. Deleting an account also deletes that student's answers.
    | `ADMIN_EMAIL` | the email the first admin will sign in with |
    | `ADMIN_PASSWORD` | their password (at least 8 characters) |
    | `AUTH_SECRET` | optional — a random string of 32+ characters used to sign sessions. If left out, a key is derived from `DATABASE_URL`. |
-   | `GROQ_API_KEY` | key for the AI summary (see below). Without it the site works and the summary says it isn't set up. |
+   | `GROQ_API_KEY` | key for the AI summary and the career helper (see below). Without it the site works, the summary says it isn't set up and the career helper button is hidden. |
 
    The first admin is created the first time someone opens the site after
    deploying, and only while there is no admin yet. After signing in,
@@ -175,6 +176,8 @@ to state nothing the answers don't support and to treat answers as data
   at most 1200 output tokens and ~14k characters of input. If it stays
   rate-limited or unavailable, `openai/gpt-oss-20b` is tried once.
   Override with `GROQ_MODEL` / `GROQ_FALLBACK_MODEL` (empty = no fallback).
+- **Language** — the summary is written in the language most answers are
+  written in (Azerbaijani, English, …), with English as the fallback.
 - **What is sent** — the worksheet answers with the printed prompt next to
   each blank. Not the student's name or email.
 - **No repeated calls** — the summary is stored with a hash of its input
@@ -194,6 +197,32 @@ changing a worksheet, run it after `build.py`:
 ```bash
 python3 scripts/worksheets/context.py
 ```
+
+## Career helper (Groq)
+
+A **Career helper** button sits in the bottom-right corner of every page
+for signed-in users. Students can ask about careers, study paths,
+internships, CVs and interviews, and it answers in the language they write
+in.
+
+- **Where it runs** — `server/chat.js` (rules and checks) and
+  `api/chat.js`; the same `GROQ_API_KEY`, model and retries as the summary,
+  plain-text answers of at most 900 tokens.
+- **What is sent** — the last 10 messages of the conversation and the list
+  of stages and worksheets on the site. Not the student's name, email or
+  worksheet answers.
+- **What is kept** — the conversation stays in the browser tab
+  (`sessionStorage`) and disappears when the tab is closed. The server only
+  records when a question was asked (`app_ai_chat_usage`, cleared after
+  two days) for the limits.
+- **Limits** — 30 questions per account per hour and 600 for the whole site;
+  messages up to 1,500 characters; a conversation of up to 20 messages
+  (then **New conversation**).
+- **Safety** — the model is told to stay on career topics, not to invent
+  facts about the Academy (it points to Info.SpaceAcademy@azercosmos.az),
+  not to ask for personal details, and to point a student who seems upset
+  to a trusted adult or counsellor. Answers are shown as plain text with
+  bold and lists only; no HTML from the model is ever rendered.
 
 ## Tests
 
@@ -275,7 +304,7 @@ src/
   components/   Navbar, Footer, Hero, PageHero, PartnerBand,
                 SupportersGrid, CategoryRow, TopicCard, StageNav,
                 Checklist, Callout, Layout, AccountBar, AdminTabs,
-                DocumentCard
+                DocumentCard, AiSummary, CareerChat, MiniMarkdown
   pages/        Home + the six stage pages, Worksheet, Admin, AdminProgress
   auth/         session check in the browser
   worksheets/   worksheet API calls and progress helpers
@@ -300,6 +329,6 @@ tests/          node:test unit and API tests
 
 React 19, React Router 7, Vite, Tailwind CSS v4 (CSS-based config — see
 `src/index.css`), lucide-react for icons. Backend: Vercel Functions and
-Routing Middleware, Postgres via `pg`, sessions via `jose`, AI summary via
-Groq's REST API (no SDK).
+Routing Middleware, Postgres via `pg`, sessions via `jose`, AI summary and
+career helper via Groq's REST API (no SDK).
 

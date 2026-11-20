@@ -151,6 +151,13 @@ export default function PrivacyPolicy() {
               your account so it doesn't have to be created again, and it is
               deleted together with the account.
             </p>
+            <p className="mt-3 leading-relaxed text-slate">
+              The career helper (the chat button at the bottom of each page)
+              sends the messages of your current conversation to Groq, Inc.
+              to write the answers. The conversation is kept only in your
+              browser tab and is not saved on this site; we only record when
+              a question was asked, to limit how many can be asked per hour.
+            </p>
           </Reveal>
 
           <Reveal as="div">
@@ -173,7 +180,8 @@ export default function PrivacyPolicy() {
               We don't sell or rent visitor information. The site is hosted
               by Vercel, and accounts and worksheet answers are stored in a
               database run by Neon on servers in Frankfurt, Germany. AI
-              summaries are created by Groq, Inc. (see section 5). These
+              summaries and the career helper's answers are created by Groq,
+              Inc. (see section 5). These
               providers, our font provider (Google Fonts), and any analytics
               tool we choose to use process data only to operate the site.
               We don't share anything with advertisers.

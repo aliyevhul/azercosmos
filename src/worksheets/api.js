@@ -66,6 +66,16 @@ export const createSummary = (docId, userId) =>
     body: JSON.stringify({ ...(docId ? { doc: docId } : {}), ...(userId ? { user: Number(userId) } : {}) }),
   });
 
+// Career helper chat. messages: [{ role: "user" | "assistant", content }]
+export const chatAvailable = () => request("/api/chat");
+
+export const sendChat = (messages) =>
+  request("/api/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ messages }),
+  });
+
 // ── Progress helpers ─────────────────────────────────────────────────────
 export const countFilled = (answers) =>
   Object.values(answers).filter((v) => v === true || (typeof v === "string" && v.trim() !== "")).length;
