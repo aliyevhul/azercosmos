@@ -31,6 +31,14 @@ export default function Footer() {
           </li>
         </ul>
       </div>
+      <div className="border-t border-white/10">
+        <p className="mx-auto max-w-7xl px-5 py-3 pr-20 text-xs text-white/60 sm:pr-5 md:px-8">
+          {site.credit.label} {site.credit.name} ·{" "}
+          <a href={`mailto:${site.credit.email}`} className="hover:text-white">
+            {site.credit.email}
+          </a>
+        </p>
+      </div>
     </footer>
   );
 }

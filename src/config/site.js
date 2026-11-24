@@ -48,6 +48,9 @@ export const site = {
 
   copyrightHolder: "Space Academy",
 
+  // Credit line under the footer (and on the sign-in page).
+  credit: { label: "Website created by", name: "Huseyn Aliyev", email: "hastudio.az@gmail.com" },
+
   // Hero photos shown next to the bold headline on each page. Drop your
   // own photos into /public/photos/ and point these at them, e.g.
   // "/photos/home-hero.jpg". Recommended size: at least 1200x800px,
